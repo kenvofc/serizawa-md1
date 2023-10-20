@@ -1,10 +1,10 @@
-//base by Kenv OFC (Kenv Bot Inc.)
-//YouTube: @DGXeon
-//Instagram: unicorn_xeon13
-//Telegram: t.me/xeonbotinc
-//GitHub: @kenvofc
+//base by Serizawa-md (Serizawa Bot Inc.)
+//YouTube: @
+//Instagram: 
+//Telegram: 
+//GitHub: @serizawa-md
 //WhatsApp: +237656774511
-//want more free bot scripts? subscribe to my youtube channel: https://youtube.com/@DGXeon
+//want more free bot scripts? subscribe to my youtube channel: 
 
 const {
    spawn
