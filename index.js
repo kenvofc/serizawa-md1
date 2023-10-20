@@ -3,7 +3,7 @@ const moment = require('moment-timezone');
 const { baileys, boom, chalk, fs, figlet, FileType, path, pino, process, PhoneNumber, axios, yargs, _ } = modul;
 const { Boom } = boom
 const {
-	default: XeonBotIncConnect,
+	default: SzBotIncConnect,
 	BufferJSON,
 	initInMemoryKeyStore,
 	DisconnectReason,
@@ -46,14 +46,14 @@ const owner = JSON.parse(fs.readFileSync('./database/owner.json'))
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
-require('./XeonCheems8.js')
-nocache('../XeonCheems8.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
+require('./serizawa.js')
+nocache('../Serizawa.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
 require('./index.js')
 nocache('../index.js', module => console.log(color('[ CHANGE ]', 'green'), color(`'${module}'`, 'green'), 'Updated'))
 
-async function XeonBotIncBot() {
+async function SzBotIncBot() {
 	const {  saveCreds, state } = await useMultiFileAuthState(`./${sessionName}`)
-    	const XeonBotInc = XeonBotIncConnect({
+    	const SzBotInc = SzBotIncConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
         browser: [`${botname}`,'Safari','3.0'],
@@ -64,14 +64,14 @@ async function XeonBotIncBot() {
                 return msg.message || undefined
             }
             return {
-                conversation: "Cheems Bot Here"
+                conversation: "Serizawa-md fait son entrée sous vos ovations 😌"
             }
         }
     })
 
-    store.bind(XeonBotInc.ev)
+    store.bind(SzBotInc.ev)
 
-XeonBotInc.ev.on('connection.update', async (update) => {
+SzBotInc.ev.on('connection.update', async (update) => {
 	const {
 		connection,
 		lastDisconnect
@@ -80,19 +80,19 @@ try{
 		if (connection === 'close') {
 			let reason = new Boom(lastDisconnect?.error)?.output.statusCode
 			if (reason === DisconnectReason.badSession) {
-				console.log(`Bad Session File, Please Delete Session and Scan Again`);
-				XeonBotIncBot()
+				console.log(`Mauvaise session scanne à nouveau `);
+				SzBotIncBot()
 			} else if (reason === DisconnectReason.connectionClosed) {
-				console.log("Connection closed, reconnecting....");
-				XeonBotIncBot();
+				console.log("Connection expirée, reconnection....");
+				SzBotIncBot();
 			} else if (reason === DisconnectReason.connectionLost) {
-				console.log("Connection Lost from Server, reconnecting...");
-				XeonBotIncBot();
+				console.log("Connection échouée depuis le Server, reconnection...");
+				SzBotIncBot();
 			} else if (reason === DisconnectReason.connectionReplaced) {
-				console.log("Connection Replaced, Another New Session Opened, Please Close Current Session First");
+				console.log("Connection Remplacée, Une Nouvelle Session A Été Ouverte, Veuillez D'abord Fermer La Session Encours");
 				XeonBotIncBot()
 			} else if (reason === DisconnectReason.loggedOut) {
-				console.log(`Device Logged Out, Please Scan Again And Run.`);
+				console.log(`Device Logged Out, Veuillez Scanner A Nouveau.`);
 				XeonBotIncBot();
 			} else if (reason === DisconnectReason.restartRequired) {
 				console.log("Restart Required, Restarting...");
