@@ -38,13 +38,7 @@
    <img alt="whatsapp" src="https://img.shields.io/badge/Public Bot Group-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
 
 <p align="center"><img src="https://profile-counter.glitch.me/{serizawa-md}/count.svg" alt="serizawa-md :: Visitor's Count" /></p>
-<p align="center">
-  <a href="https://github.com/r00t-3xp10it//github-readme-stats">
-    <img
-      align="center"
-      height="165"
-      src="https://github-readme-stats.vercel.app/api?username=r00t-3xp10it&count_private=true&show_icons=true&custom_title=Github%20Status&hide=issues&theme=radical"
-    />
+
   </a>
 </p>
  </p>
