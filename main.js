@@ -1,10 +1,10 @@
-//base by kenvofc (kenv Bot Inc.)
-//YouTube: @DGXeon
-//Instagram: unicorn_xeon13
-//Telegram: t.me/xeonbotinc
-//GitHub: @kenvofc
-//WhatsApp: +916909137213
-//want more free bot scripts? subscribe to my youtube channel: https://youtube.com/@DGXeon
+//base by serizawa-md (serizawa Bot Inc.)
+//YouTube: 
+//Instagram:
+//Telegram: 
+//GitHub: @serizawa-md
+//WhatsApp: https://chat.whatsapp.com/B9nJSr7omFPKhXoPfzgQoq
+//want more free bot scripts? subscribe to my youtube channel: 
 
 require('./settings')
 const pino = require('pino')
@@ -17,7 +17,7 @@ const axios = require('axios')
 const PhoneNumber = require('awesome-phonenumber')
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, isUrl, generateMessageTag, getBuffer, getSizeMedia, fetch, await, sleep, reSize } = require('./lib/myfunc')
-const { default: KenvBotIncConnect, delay, PHONENUMBER_MCC, makeCacheableSignalKeyStore, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@whiskeysockets/baileys")
+const { default: SerizawaBotIncConnect, delay, PHONENUMBER_MCC, makeCacheableSignalKeyStore, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@whiskeysockets/baileys")
 const NodeCache = require("node-cache")
 const Pino = require("pino")
 const readline = require("readline")
@@ -40,12 +40,12 @@ const useMobile = process.argv.includes("--mobile")
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (text) => new Promise((resolve) => rl.question(text, resolve))
          
-async function startKenvBotInc() {
+async function startSerizawaBotInc() {
 //------------------------------------------------------
 let { version, isLatest } = await fetchLatestBaileysVersion()
 const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
     const msgRetryCounterCache = new NodeCache() // for retry message, "waiting message"
-    const KenvBotInc = makeWASocket({
+    const SerizawaBotInc = makeWASocket({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: !pairingCode, // popping up QR in terminal log
       mobile: useMobile, // mobile api (prone to bans)
@@ -67,11 +67,11 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
       defaultQueryTimeoutMs: undefined, // for this issues https://github.com/WhiskeySockets/Baileys/issues/276
    })
    
-   store.bind(KenvBotInc.ev)
+   store.bind(SerizawaBotInc.ev)
 
     // login use pairing code
    // source code https://github.com/WhiskeySockets/Baileys/blob/master/Example/example.ts#L61
-   if    if (pairingCode && !KenvBotInc.authState.creds.registered) {
+   if    if (pairingCode && !SerizawaBotInc.authState.creds.registered) {
       if (useMobile) throw new Error('Cannot use pairing code with mobile api')
 
       let phoneNumber
@@ -97,13 +97,13 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
       }
 
       setTimeout(async () => {
-         let code = await XeonBotInc.requestPairingCode(phoneNumber)
+         let code = await SerizawaBotInc.requestPairingCode(phoneNumber)
          code = code?.match(/.{1,4}/g)?.join("-") || code
          console.log(chalk.black(chalk.bgGreen(`Your Pairing Code : `)), chalk.black(chalk.white(code)))
       }, 3000)
    }
 
-    KenvBotInc.ev.on('messages.upsert', async chatUpdate => {
+    SerizawaBotInc.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
             const mek = chatUpdate.messages[0]
@@ -111,20 +111,20 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
             mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
             if (mek.key && mek.key.remoteJid === 'status@broadcast'){
             if (autoread_status) {
-            await KenvBotInc.readMessages([mek.key]) 
+            await SerizawaBotInc.readMessages([mek.key]) 
             }
             } 
-            if (!KenvBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+            if (!SerizawaBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
             if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
-            const m = smsg(KenvBotInc, mek, store)
-            require("./XeonBug3")(KenvBotInc, m, chatUpdate, store)
+            const m = smsg(SerizawaBotInc, mek, store)
+            require("./Serizawav1")(SerizawaBotInc, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }
     })
 
    
-    KenvBotInc.decodeJid = (jid) => {
+    SerizawaBotInc.decodeJid = (jid) => {
         if (!jid) return jid
         if (/:\d+@/gi.test(jid)) {
             let decode = jidDecode(jid) || {}
@@ -132,9 +132,9 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
         } else return jid
     }
 
-    KenvBotInc.ev.on('contacts.update', update => {
+    SerizawaBotInc.ev.on('contacts.update', update => {
         for (let contact of update) {
-            let id = KenvBotInc.decodeJid(contact.id)
+            let id = SerizawaBotInc.decodeJid(contact.id)
             if (store && store.contacts) store.contacts[id] = {
                 id,
                 name: contact.notify
@@ -142,39 +142,39 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
         }
     })
 
-    KenvBotInc.getName = (jid, withoutContact = false) => {
-        id = KenvBotInc.decodeJid(jid)
-        withoutContact = KenvBotInc.withoutContact || withoutContact
+    SerizawaBotInc.getName = (jid, withoutContact = false) => {
+        id = SerizawaBotInc.decodeJid(jid)
+        withoutContact = SerizawaBotInc.withoutContact || withoutContact
         let v
         if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
             v = store.contacts[id] || {}
-            if (!(v.name || v.subject)) v = KenvBotInc.groupMetadata(id) || {}
+            if (!(v.name || v.subject)) v = SerizawaBotInc.groupMetadata(id) || {}
             resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
         })
         else v = id === '0@s.whatsapp.net' ? {
                 id,
                 name: 'WhatsApp'
-            } : id === KenvBotInc.decodeJid(KenvBotInc.user.id) ?
-            KenvBotInc.user :
+            } : id === SerizawaBotInc.decodeJid(SerizawaBotInc.user.id) ?
+            SerizawaBotInc.user :
             (store.contacts[id] || {})
         return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
     }
     
-    KenvBotInc.public = true
+    SerizawaBotInc.public = true
 
-    KenvBotInc.serializeM = (m) => smsg(KenvBotInc, m, store)
+    SerizawaBotInc.serializeM = (m) => smsg(SerizawaBotInc, m, store)
 
-KenvBotInc.ev.on("connection.update",async  (s) => {
+SerizawaBotInc.ev.on("connection.update",async  (s) => {
         const { connection, lastDisconnect } = s
         if (connection == "open") {
         	console.log(chalk.magenta(` `))
-            console.log(chalk.yellow(`🇨🇲Connected to => ` + JSON.stringify(KenvBotInc.user, null, 2)))
+            console.log(chalk.yellow(`🇨🇲Connected to => ` + JSON.stringify(SerizawaBotInc.user, null, 2)))
 			await delay(1999)
             console.log(chalk.yellow(`\n\n                  ${chalk.bold.blue(`[ ${botname} ]`)}\n\n`))
             console.log(chalk.cyan(`< ================================================== >`))
-	        console.log(chalk.magenta(`\n${themeemoji} YT CHANNEL: Xeon`))
-            console.log(chalk.magenta(`${themeemoji} GITHUB: kenvofc `))
-            console.log(chalk.magenta(`${themeemoji} INSTAGRAM: @unicorn_xeon13 `))
+	        console.log(chalk.magenta(`\n${themeemoji} YT CHANNEL: `))
+            console.log(chalk.magenta(`${themeemoji} GITHUB: serizawa-md `))
+            console.log(chalk.magenta(`${themeemoji} INSTAGRAM: @ `))
             console.log(chalk.magenta(`${themeemoji} WA NUMBER: ${owner}`))
             console.log(chalk.magenta(`${themeemoji} CREDIT: ${wm}\n`))
         }
@@ -184,27 +184,27 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
             lastDisconnect.error &&
             lastDisconnect.error.output.statusCode != 401
         ) {
-            startXeonBotInc()
+            startSerizawaBotInc()
         }
     })
-    KenvBotInc.ev.on('creds.update', saveCreds)
-    KenvBotInc.ev.on("messages.upsert",  () => { })
+    SerizawaBotInc.ev.on('creds.update', saveCreds)
+    SerizawaBotInc.ev.on("messages.upsert",  () => { })
 
-    KenvBotInc.sendText = (jid, text, quoted = '', options) => KenvBotInc.sendMessage(jid, {
+    SerizawaBotInc.sendText = (jid, text, quoted = '', options) => SerizawaBotInc.sendMessage(jid, {
         text: text,
         ...options
     }, {
-        quoted,
-        ...options
-    })
-    KenvBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => KenbnBotInc.sendMessage(jid, {
+              quoted, 
+         ...options 
+     }) 
+     SerizawaBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => SerizawaBotInc.sendMessage(jid, {
         text: text,
         mentions: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net'),
         ...options
     }, {
         quoted
     })
-    KenvBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+    SerizawaBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -213,7 +213,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
             buffer = await imageToWebp(buff)
         }
 
-        await KenvBotInc.sendMessage(jid, {
+        await SerizawaBotInc.sendMessage(jid, {
             sticker: {
                 url: buffer
             },
@@ -223,7 +223,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
         })
         return buffer
     }
-    KenvBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+    SerizawaBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,` [1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -232,7 +232,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
             buffer = await videoToWebp(buff)
         }
 
-        await KenvBotInc.sendMessage(jid, {
+        await SerizawaBotInc.sendMessage(jid, {
             sticker: {
                 url: buffer
             },
@@ -242,7 +242,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
         })
         return buffer
     }
-    KenvBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+    SerizawaBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
         let quoted = message.msg ? message.msg : message
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -258,7 +258,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
         return trueFileName
     }
 
-    KenvBotInc.downloadMediaMessage = async (message) => {
+    SerizawaBotInc.downloadMediaMessage = async (message) => {
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
         const stream = await downloadContentFromMessage(message, messageType)
@@ -270,7 +270,7 @@ KenvBotInc.ev.on("connection.update",async  (s) => {
         return buffer
     }
     }
-return startKenvBotInc()
+return startSerizawaBotInc()
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
