@@ -72,7 +72,7 @@
 
 - 📄 𝑳𝒊𝒄𝒆𝒏𝒄𝒆
   
- 𝑪𝒆 𝒑𝒓𝒐𝒋𝒆𝒕 𝒆𝒔𝒕 𝒔𝒐𝒖𝒔 𝒍𝒂 𝒍𝒊𝒄𝒆𝒏𝒄𝒆 [MIT] 𝒗𝒐𝒊𝒓 𝒍𝒆 𝒇𝒊𝒄𝒉𝒊𝒆𝒓𝒔 [LICENCE](https://github.com/serizawa-md/SERISAWA-MD/LICENCE) 𝒑𝒐𝒖𝒓 𝒑𝒍𝒖𝒔 𝒅𝒆 𝒅𝒆𝒕𝒂𝒊𝒍𝒔.
+ 𝑪𝒆 𝒑𝒓𝒐𝒋𝒆𝒕 𝒆𝒔𝒕 𝒔𝒐𝒖𝒔 𝒍𝒂 𝒍𝒊𝒄𝒆𝒏𝒄𝒆 [MIT] 𝒗𝒐𝒊𝒓 𝒍𝒆 𝒇𝒊𝒄𝒉𝒊𝒆𝒓𝒔 [LICENCE](https://github.com/serizawa-md/SERISAWA-MD/blob/mainLICENCE) 𝒑𝒐𝒖𝒓 𝒑𝒍𝒖𝒔 𝒅𝒆 𝒅𝒆𝒕𝒂𝒊𝒍𝒔.
 
 - 🏋️ [𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒑𝒆𝒖𝒓𝒔]
   
