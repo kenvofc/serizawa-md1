@@ -90,37 +90,37 @@ try{
 				SzBotIncBot();
 			} else if (reason === DisconnectReason.connectionReplaced) {
 				console.log("Connection Remplacée, Une Nouvelle Session A Été Ouverte, Veuillez D'abord Fermer La Session Encours");
-				XeonBotIncBot()
+				SzBotIncBot()
 			} else if (reason === DisconnectReason.loggedOut) {
 				console.log(`Device Logged Out, Veuillez Scanner A Nouveau.`);
-				XeonBotIncBot();
+				SzBotIncBot();
 			} else if (reason === DisconnectReason.restartRequired) {
 				console.log("Restart Required, Restarting...");
-				XeonBotIncBot();
+				SzBotIncBot();
 			} else if (reason === DisconnectReason.timedOut) {
-				console.log("Connection TimedOut, Reconnecting...");
-				XeonBotIncBot();
-			} else XeonBotInc.end(`Unknown DisconnectReason: ${reason}|${connection}`)
+				console.log("Connection TimedOut, Reconnection...");
+				SzBotIncBot();
+			} else SzBotInc.end(`Unknown DisconnectReason: ${reason}|${connection}`)
 		}
-		if (update.connection == "connecting" || update.receivedPendingNotifications == "false") {
-			console.log(color(`\n🌿Connecting...`, 'yellow'))
+		if (update.connection == "connection" || update.receivedPendingNotifications == "false") {
+			console.log(color(`\n☣️Connection...`, 'yellow'))
 		}
 		if (update.connection == "open" || update.receivedPendingNotifications == "true") {
 			console.log(color(` `,'magenta'))
-            console.log(color(`🌿Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2), 'yellow'))
+            console.log(color(`☣️Connectée à => ` + JSON.stringify(SzBotInc.user, null, 2), 'yellow'))
 			await delay(1999)
             console.log(chalk.yellow(`\n\n               ${chalk.bold.blue(`[ ${botname} ]`)}\n\n`))
             console.log(color(`< ================================================== >`, 'cyan'))
-	        console.log(color(`\n${themeemoji} YT CHANNEL: Xeon`,'magenta'))
-            console.log(color(`${themeemoji} GITHUB: DGXeon `,'magenta'))
-            console.log(color(`${themeemoji} INSTAGRAM: @unicorn_xeon `,'magenta'))
+	        console.log(color(`\n${themeemoji} YT CHANNEL: `,'magenta'))
+            console.log(color(`${themeemoji} GITHUB: serizawa-md `,'magenta'))
+            console.log(color(`${themeemoji} INSTAGRAM: @ `,'magenta'))
             console.log(color(`${themeemoji} WA NUMBER: ${owner}`,'magenta'))
             console.log(color(`${themeemoji} CREDIT: ${wm}\n`,'magenta'))
 		}
 	
 } catch (err) {
 	  console.log('Error in Connection.update '+err)
-	  XeonBotIncBot();
+	  SzBotIncBot();
 	}
 	
 })
@@ -128,13 +128,13 @@ try{
 await delay(5555) 
 start('2',colors.bold.white('\n\nWaiting for New Messages..'))
 
-XeonBotInc.ev.on('creds.update', await saveCreds)
+SzBotInc.ev.on('creds.update', await saveCreds)
 
     // Anti Call
-    XeonBotInc.ev.on('call', async (XeonPapa) => {
-    let botNumber = await XeonBotInc.decodeJid(XeonBotInc.user.id)
-    let XeonBotNum = db.settings[botNumber].anticall
-    if (!XeonBotNum) return
+    SzBotInc.ev.on('call', async (kenvofc) => {
+    let botNumber = await SzBotInc.decodeJid(SzBotInc.user.id)
+    let serizawaBotNum = db.settings[botNumber].anticall
+    if (!serizawaBotNum) return
     console.log(XeonPapa)
     for (let XeonFucks of XeonPapa) {
     if (XeonFucks.isGroup == false) {
