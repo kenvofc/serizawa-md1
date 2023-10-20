@@ -13,21 +13,21 @@
 
 <p align="center">
   <a href="" target="_blank">
-    <img alt="Forked" src="https://img.shields.io/github/forks/serizawa-md/SERIZAWA" align="left" />
+    <img alt="Forked" src="https://img.shields.io/github/forks/serizawa-md/SERIZAWA-MD" align="left" />
   </a>
   <a href="" target="_blank">
     <img src="https://komarev.com/ghpvc/?username=serizawa-md&label=Profil%20vues&color=0e75b6&style=flat" alt="serizawa-md" align="right" />
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/serizawa-md/SERIZAWA/stargazers/" align="center">
-    <img title="Etoiles" src="https://img.shields.io/github/stars/serizawa-md/SERIZAWA?color=0e75b6&style=flat" />
+  <a href="https://github.com/serizawa-md/SERIZAWA-MD/stargazers/" align="center">
+    <img title="Etoiles" src="https://img.shields.io/github/stars/serizawa-md/SERIZAWA-MD ?color=0e75b6&style=flat" />
   </a>
 </p>
 
 <p align="center">
- <a href="https://github.com/serizawa-md/SERIZAWA/LICENCE">
-<img src='https://img.shields.io/github/license/serizawa-md/SERIZAWA?color=%231e81b0&style=for-the-badge' width="143px" />
+ <a href="https://github.com/serizawa-md/SERIZAWA-MD/LICENCE">
+<img src='https://img.shields.io/github/license/serizawa-md/SERIZAWA-MD?color=%231e81b0&style=for-the-badge' width="143px" />
  </a>
 </p>
 
