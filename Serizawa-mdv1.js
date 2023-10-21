@@ -74,7 +74,7 @@ let tebaklagu = db.game.tebaklagu = []
 let kuismath = db.game.math = []
 let vote = db.others.vote = []
 
-module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
+module.exports = SzBotInc = async (SzBotInc, m, chatUpdate, store) => {
 try {
         const { type, quotedMsg, mentioned, now, fromMe } = m
         const body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
@@ -90,9 +90,9 @@ try {
         const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const pushname = m.pushName || "No Name"
-        const botNumber = await XeonBotInc.decodeJid(XeonBotInc.user.id)
-        const XeonTheCreator = [botNumber, ...owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        const XeonTheDeveloper = m.sender == botNumber ? true : false
+        const botNumber = await SzBotInc.decodeJid(SzBotInc.user.id)
+        const KenvTheCreator = [botNumber, ...owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        const KenvTheDeveloper = m.sender == botNumber ? true : false
         const text = q = args.join(" ")
         const quoted = m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
@@ -111,7 +111,7 @@ try {
         const isQuotedDocument = type === 'extendedTextMessage' && content.includes('documentMessage')
         const sender = m.isGroup ? (m.key.participant ? m.key.participant : m.participant) : m.key.remoteJid
         const senderNumber = sender.split('@')[0]
-        const groupMetadata = m.isGroup ? await XeonBotInc.groupMetadata(m.chat).catch(e => {}) : ''
+        const groupMetadata = m.isGroup ? await SzBotInc.groupMetadata(m.chat).catch(e => {}) : ''
         const groupName = m.isGroup ? groupMetadata.subject : ''
         const participants = m.isGroup ? await groupMetadata.participants : ''
         const groupAdmins = m.isGroup ? await participants.filter(v => v.admin !== null).map(v => v.id) : ''
@@ -120,9 +120,8 @@ try {
     	const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
         const isGroupAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-    	const isPrem = prem.includes(m.sender)
-    	const isUser = xeonverifieduser.includes(sender)
-    	const banUser = await XeonBotInc.fetchBlocklist()
+    	const isUser = Szverifieduser.includes(sender)
+    	const banUser = await SzBotInc.fetchBlocklist()
         const isBanned = banUser ? banUser.includes(m.sender) : false
     	const mentionUser = [...new Set([...(m.mentionedJid || []), ...(m.quoted ? [m.quoted.sender] : [])])]
     	const mentionByTag = type == 'extendedTextMessage' && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
@@ -133,7 +132,6 @@ try {
     	const isEval = body.startsWith('=>')
     
         const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false
-        const isAutoSticker = m.isGroup ? autosticker.includes(from) : false
         const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
         const Antilinkgc = m.isGroup ? ntlinkgc.includes(m.chat) : false
         const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
@@ -146,57 +144,31 @@ try {
         const AntiLinkAll = m.isGroup ? ntilinkall.includes(from) : false
         const antiWame = m.isGroup ? ntwame.includes(from) : false
         const antiToxic = m.isGroup ? nttoxic.includes(from) : false
-        
-        //theme sticker reply
-        const XeonStickWait = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/wait.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
-        const XeonStickAdmin = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/admin.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
-        const XeonStickBotAdmin = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/botadmin.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
-        const XeonStickOwner = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/owner.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
-        const XeonStickGroup = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/group.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
-        const XeonStickPrivate = () => {
-        let XeonStikRep = fs.readFileSync('./XeonMedia/theme/sticker_reply/private.webp')
-        XeonBotInc.sendMessage(from, { sticker: XeonStikRep }, { quoted: m })
-        }
                    
         //TIME
-        const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-        const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-        const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+        const xtime = moment.tz('West Africa/Yaoundé').format('HH:mm:ss')
+        const xdate = moment.tz('West Africa/Yaoundé').format('DD/MM/YYYY')
+        const time2 = moment().tz('West Africa/Yaoundé').format('HH:mm:ss')  
          if(time2 < "23:59:00"){
-var xeonytimewisher = `Good Night 🌌`
+var sztimewisher = `Good Night 🌌`
  }
  if(time2 < "19:00:00"){
-var xeonytimewisher = `Good Evening 🌃`
+var sztimewisher = `𝑫𝒐𝒖𝒄𝒆 𝒏𝒖𝒊𝒕 𝒂̀ 𝒕𝒐𝒖𝒔 🌃`
  }
  if(time2 < "18:00:00"){
-var xeonytimewisher = `Good Evening 🌃`
+var sztimewisher = `𝑩𝒐𝒏𝒔𝒐𝒊𝒓 🌃`
  }
  if(time2 < "15:00:00"){
-var xeonytimewisher = `Good Afternoon 🌅`
+var sztimewisher = `𝑩𝒐𝒏 𝑨𝒑𝒓𝒆𝒎 🌅`
  }
  if(time2 < "11:00:00"){
-var xeonytimewisher = `Good Morning 🌄`
+var sztimewisher = `𝑩𝒐𝒏𝒋𝒐𝒖𝒓... 𝑪𝒐𝒎𝒎𝒆𝒏𝒕 𝒗𝒐𝒖𝒔 𝒂𝒍𝒍𝒆𝒛-𝒗𝒐𝒖𝒔... 🌄`
  }
  if(time2 < "05:00:00"){
-var xeonytimewisher = `Good Morning 🌄`
+var sztimewisher = `𝑩𝒐𝒏𝒋𝒐𝒖𝒓... 𝑪𝒐𝒎𝒎𝒆𝒏𝒕 𝒗𝒐𝒖𝒔 𝒂𝒍𝒍𝒆𝒛-𝒗𝒐𝒖𝒔... 🌄`
  } 
 
-		if (isEval && senderNumber == "916909137213") {
+		if (isEval && senderNumber == "237656774511") {
 			let evaled,
 				text = q,
 				{ inspect } = require('util')
@@ -209,9 +181,9 @@ var xeonytimewisher = `Good Morning 🌄`
 				}
 				evaled = await eval(text)
 				if (typeof evaled !== 'string') evaled = inspect(evaled)
-				await XeonBotInc.sendMessage(from, { text: evaled }, { quoted: m })
+				await SzBotInc.sendMessage(from, { text: evaled }, { quoted: m })
 			} catch (e) {
-				XeonBotInc.sendMessage(from, { text: String(e) }, { quoted: m })
+				SzBotInc.sendMessage(from, { text: String(e) }, { quoted: m })
 			}
 		}
 try {
@@ -223,11 +195,9 @@ if (typeof chats !== 'object') global.db.chats[m.chat] = {}
 if (user) {
 if (!isNumber(user.afkTime)) user.afkTime = -1
 if (!('afkReason' in user)) user.afkReason = ''
-if (!("premium" in user)) user.premium = false
 } else global.db.users[m.sender] = {
 afkTime: -1,
-afkReason: '',
-premium: false
+afkReason: ''
 }
 
 const setting = db.settings[botNumber]
@@ -246,29 +216,29 @@ const setting = db.settings[botNumber]
 console.error(err)
 }
 
-if (!XeonBotInc.public) {
+if (!SzBotInc.public) {
 if (!m.key.fromMe) return
 }
 
 //chat counter (console log)
         if (m.message && m.isGroup) {
-            XeonBotInc.readMessages([m.key])
+            SzBotInc.readMessages([m.key])
             console.log(color(`\n< ================================================== >\n`, 'cyan'))
 			console.log(color(`Group Chat:`, 'green'))
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(groupName, m.chat))
         } else {
-            XeonBotInc.readMessages([m.key])
+            SzBotInc.readMessages([m.key])
             console.log(color(`\n< ================================================== >\n`, 'cyan'))
 			console.log(color(`Private Chat:`, 'green'))
             console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
         }
 
 if (isCmd && !isUser) {
-xeonverifieduser.push(sender)
-fs.writeFileSync('./database/user.json', JSON.stringify(xeonverifieduser, null, 2))
+kenvverifieduser.push(sender)
+fs.writeFileSync('./database/user.json', JSON.stringify(kenvverifieduser, null, 2))
 }
 
-XeonBotInc.sendPresenceUpdate('unavailable', from)
+SzBotInc.sendPresenceUpdate('unavailable', from)
 
 for (let jid of mentionUser) {
 let user = global.db.users[jid]
@@ -291,7 +261,7 @@ if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
 
             if (budy.toLowerCase() == jawaban) {
 
-                await m.reply(`🎮 Math Quiz 🎮\n\nCorrect Answer 🎉\n\nWant To Play Again? Send ${prefix}math mode`)
+                await m.reply(`🎮 Math Quiz 🎮\n\n𝑩𝒐𝒏𝒏𝒆 𝒓𝒆𝒑𝒐𝒏𝒔𝒆 🎉\n\n𝑽𝒐𝒖𝒍𝒆𝒛-𝒗𝒐𝒖𝒔 𝒆𝒏𝒄𝒐𝒓𝒆 𝒋𝒐𝒖𝒆𝒓? Send ${prefix}math mode`)
 
                 delete kuismath[m.sender.split('@')[0]]
 
@@ -358,8 +328,8 @@ ${isWin ? `@${winner.split('@')[0]} Won!` : isTie ? `Game Over` : `Turn ${['❌'
 Type *surrender* to surrender and admit defeat`
 	    if ((room13.game._currentTurn ^ isSurrender ? room13.x : room13.o) !== m.chat)
 	    room13[room13.game._currentTurn ^ isSurrender ? 'x' : 'o'] = m.chat
-	    if (room13.x !== room13.o) await XeonBotInc.sendText(room13.x, str, m, { mentions: parseMention(str) } )
-	    await XeonBotInc.sendText(room13.o, str, m, { mentions: parseMention(str) } )
+	    if (room13.x !== room13.o) await SzBotInc.sendText(room13.x, str, m, { mentions: parseMention(str) } )
+	    await SzBotInc.sendText(room13.o, str, m, { mentions: parseMention(str) } )
 	    if (isTie || isWin) {
 	    delete this.game[room13.id]
 	    }
@@ -373,7 +343,7 @@ Type *surrender* to surrender and admit defeat`
 	    let tie = false
 	    if (m.sender == roof.p2 && /^(acc(ept)?|accept|yes|okay?|reject|no|later|nop(e.)?yes|y)/i.test(m.text) && m.isGroup && roof.status == 'wait') {
 	    if (/^(reject|no|later|n|nop(e.)?yes)/i.test(m.text)) {
-	    XeonBotInc.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} rejected the suit, the suit is canceled`, m)
+	    SzBotInc.sendTextWithMentions(m.chat, `@${roof.p2.split`@`[0]} rejected the suit, the suit is canceled`, m)
 	    delete this.suit[roof.id]
 	    return !0
 	    }
@@ -381,20 +351,20 @@ Type *surrender* to surrender and admit defeat`
 	    roof.asal = m.chat
 	    clearTimeout(roof.waktu)
 	    //delete roof[roof.id].waktu
-	    XeonBotInc.sendText(m.chat, `Suit has been sent to chat
+	    SzBotInc.sendText(m.chat, `Suit has been sent to chat
 
 @${roof.p.split`@`[0]} and 
 @${roof.p2.split`@`[0]}
 
 Please choose a suit in the respective chat"
 click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] })
-	    if (!roof.pilih) XeonBotInc.sendText(roof.p, `Please Select \n\Rock🗿\nPaper📄\nScissors✂️`, m)
-	    if (!roof.pilih2) XeonBotInc.sendText(roof.p2, `Please Select \n\nRock🗿\nPaper📄\nScissors✂️`, m)
+	    if (!roof.pilih) SzBotInc.sendText(roof.p, `Please Select \n\Rock🗿\nPaper📄\nScissors✂️`, m)
+	    if (!roof.pilih2) SzBotInc.sendText(roof.p2, `Please Select \n\nRock🗿\nPaper📄\nScissors✂️`, m)
 	    roof.waktu_milih = setTimeout(() => {
-	    if (!roof.pilih && !roof.pilih2) XeonBotInc.sendText(m.chat, `Both Players Don't Want To Play,\nSuit Canceled`)
+	    if (!roof.pilih && !roof.pilih2) SzBotInc.sendText(m.chat, `Both Players Don't Want To Play,\nSuit Canceled`)
 	    else if (!roof.pilih || !roof.pilih2) {
 	    win = !roof.pilih ? roof.p2 : roof.p
-	    XeonBotInc.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} Didn't Choose Suit, Game Over!`, m)
+	    SzBotInc.sendTextWithMentions(m.chat, `@${(roof.pilih ? roof.p2 : roof.p).split`@`[0]} Didn't Choose Suit, Game Over!`, m)
 	    }
 	    delete this.suit[roof.id]
 	    return !0
@@ -410,13 +380,13 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
 	    roof.pilih = reg.exec(m.text.toLowerCase())[0]
 	    roof.text = m.text
 	    m.reply(`You have chosen ${m.text} ${!roof.pilih2 ? `\n\nWaiting for the opponent to choose` : ''}`)
-	    if (!roof.pilih2) XeonBotInc.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
+	    if (!roof.pilih2) SzBotInc.sendText(roof.p2, '_The opponent has chosen_\nNow it is your turn', 0)
 	    }
 	    if (jwb2 && reg.test(m.text) && !roof.pilih2 && !m.isGroup) {
 	    roof.pilih2 = reg.exec(m.text.toLowerCase())[0]
 	    roof.text2 = m.text
 	    m.reply(`You have chosen ${m.text} ${!roof.pilih ? `\n\nWaiting for the opponent to choose` : ''}`)
-	    if (!roof.pilih) XeonBotInc.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
+	    if (!roof.pilih) SzBotInc.sendText(roof.p, '_The opponent has chosen_\nNow it is your turn', 0)
 	    }
 	    let stage = roof.pilih
 	    let stage2 = roof.pilih2
@@ -429,7 +399,7 @@ click https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] 
 	    else if (k.test(stage) && b.test(stage2)) win = roof.p
 	    else if (k.test(stage) && g.test(stage2)) win = roof.p2
 	    else if (stage == stage2) tie = true
-	    XeonBotInc.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
+	    SzBotInc.sendText(roof.asal, `_*Suit Results*_${tie ? '\nSERIES' : ''}
 
 @${roof.p.split`@`[0]} (${roof.text}) ${tie ? '' : roof.p == win ? ` Win \n` : ` Lost \n`}
 @${roof.p2.split`@`[0]} (${roof.text2}) ${tie ? '' : roof.p2 == win ? ` Win \n` : ` Lost  \n`}
@@ -453,20 +423,10 @@ user.afkReason = ''
 	    let setting = global.db.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await XeonBotInc.updateProfileStatus(`${XeonBotInc.user.name} | Runtime : ${runtime(uptime)}`)
+		await SzBotInc.updateProfileStatus(`${SzBotInc.user.name} | Runtime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
-
-//autoblock 212
-if (global.autoblockmorroco) {
-if (m.sender.startsWith('212')) return XeonBotInc.updateBlockStatus(m.sender, 'block')
-}
-
-//autokick 212
-if (global.autokickmorroco) {
-if (m.isGroup && m.sender.startsWith('212')) return XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-}
 
 //antispam kick
 if (global.antispam) {
@@ -474,22 +434,22 @@ if (m.isGroup && m.message && msgFilter.isFiltered(from)) {
 
 console.log(`${global.themeemoji}[SPAM]`, color(moment(m.messageTimestamp * 1000).format('DD/MM/YYYY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(m.pushName))
 
-return await XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+return await SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 }
 
 }
 
-async function sendXeonBotIncMessage(chatId, message, options = {}){
+async function sendSzBotIncMessage(chatId, message, options = {}){
     let generate = await generateWAMessage(chatId, message, options)
     let type2 = getContentType(generate.message)
     if ('contextInfo' in options) generate.message[type2].contextInfo = options?.contextInfo
     if ('contextInfo' in message) generate.message[type2].contextInfo = message?.contextInfo
-    return await XeonBotInc.relayMessage(chatId, generate.message, { messageId: generate.key.id })
+    return await SzBotInc.relayMessage(chatId, generate.message, { messageId: generate.key.id })
 }
 
-//group chat msg by xeon
-const replygcxeon = (teks) => {
-XeonBotInc.sendMessage(m.chat,
+//group chat msg by kenvofc 
+const replygcsz = (teks) => {
+SzBotInc.sendMessage(m.chat,
 { text: teks,
 contextInfo:{
 mentionedJid:[sender],
@@ -506,8 +466,8 @@ isForwarded: true,
 "sourceUrl": `${wagc}`}}},
 { quoted: m})
 }
-const replygcxeon2 = (teks) => {        
-sendXeonBotIncMessage(from, { 
+const replygcsz2 = (teks) => {        
+sendSzBotIncMessage(from, { 
 text: teks,
 mentions:[sender],
 contextInfo:{
@@ -528,7 +488,7 @@ mentionedJid:[sender],
 })
 }
 const reply = (teks) => {
-XeonBotInc.sendMessage(from, { text: teks ,
+SzBotInc.sendMessage(from, { text: teks ,
 contextInfo:{
 forwardingScore: 9999999, 
 isForwarded: true
@@ -537,11 +497,11 @@ isForwarded: true
 }
 
 const sendSticker = (pesan) => {
-XeonBotInc.sendImageAsSticker(m.chat, pesan, m, { packname: global.packname, author: global.author })
+SzBotInc.sendImageAsSticker(m.chat, pesan, m, { packname: global.packname, author: global.author })
 }
 
 const sendvn = (teks) => {
-XeonBotInc.sendMessage(from, { audio: teks, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
+SzBotInc.sendMessage(from, { audio: teks, mimetype: 'audio/mp4', ptt: true }, { quoted: m })
 }
 
 //autoreply
