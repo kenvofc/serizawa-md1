@@ -331,10 +331,10 @@ console.log(err)
             return msg?.message
         }
         return {
-            conversation: "Cheems Bot Here"
+            conversation: "Serizawa-md fait son entrée sous vous ovation!!!"
         }
     }
-    XeonBotInc.ev.on('messages.update', async chatUpdate => {
+    SzBotInc.ev.on('messages.update', async chatUpdate => {
         for(const { key, update } of chatUpdate) {
 			if(update.pollUpdates && key.fromMe) {
 				const pollCreation = await getMessage(key)
@@ -346,15 +346,15 @@ console.log(err)
 	                var toCmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name
 	                if (toCmd == undefined) return
                     var prefCmd = prefix+toCmd
-	                XeonBotInc.appenTextMessage(prefCmd, chatUpdate)
+	                SzBotInc.appenTextMessage(prefCmd, chatUpdate)
 				}
 			}
 		}
     })
 
-XeonBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => XeonBotInc.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+SzBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => SzBotInc.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
-XeonBotInc.decodeJid = (jid) => {
+SzBotInc.decodeJid = (jid) => {
 if (!jid) return jid
 if (/:\d+@/gi.test(jid)) {
 let decode = jidDecode(jid) || {}
@@ -362,48 +362,48 @@ return decode.user && decode.server && decode.user + '@' + decode.server || jid
 } else return jid
 }
 
-XeonBotInc.ev.on('contacts.update', update => {
+SzBotInc.ev.on('contacts.update', update => {
 for (let contact of update) {
-let id = XeonBotInc.decodeJid(contact.id)
+let id = SzBotInc.decodeJid(contact.id)
 if (store && store.contacts) store.contacts[id] = { id, name: contact.notify }
 }
 })
 
-XeonBotInc.getName = (jid, withoutContact  = false) => {
-id = XeonBotInc.decodeJid(jid)
-withoutContact = XeonBotInc.withoutContact || withoutContact 
+SzBotInc.getName = (jid, withoutContact  = false) => {
+id = SzBotInc.decodeJid(jid)
+withoutContact = SzBotInc.withoutContact || withoutContact 
 let v
 if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
 v = store.contacts[id] || {}
-if (!(v.name || v.subject)) v = XeonBotInc.groupMetadata(id) || {}
+if (!(v.name || v.subject)) v = SzBotInc.groupMetadata(id) || {}
 resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
 })
 else v = id === '0@s.whatsapp.net' ? {
 id,
 name: 'WhatsApp'
-} : id === XeonBotInc.decodeJid(XeonBotInc.user.id) ?
-XeonBotInc.user :
+} : id === SzBotInc.decodeJid(SzBotInc.user.id) ?
+SzBotInc.user :
 (store.contacts[id] || {})
 return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
 }
 
-XeonBotInc.parseMention = (text = '') => {
+SzBotInc.parseMention = (text = '') => {
 return [...text.matchAll(/@([0-9]{5,16}|0)/g)].map(v => v[1] + '@s.whatsapp.net')
 }
 
-XeonBotInc.sendContact = async (jid, kon, quoted = '', opts = {}) => {
+SzBotInc.sendContact = async (jid, kon, quoted = '', opts = {}) => {
 	let list = []
 	for (let i of kon) {
 	    list.push({
-	    	displayName: await XeonBotInc.getName(i),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await XeonBotInc.getName(i)}\nFN:${await XeonBotInc.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${ytname}\nitem2.X-ABLabel:YouTube\nitem3.URL:${socialm}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	displayName: await SzBotInc.getName(i),
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await SzBotInc.getName(i)}\nFN:${await SzBotInc.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${ytname}\nitem2.X-ABLabel:YouTube\nitem3.URL:${socialm}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
-	XeonBotInc.sendMessage(jid, { contacts: { displayName: `${list.length} Contact`, contacts: list }, ...opts }, { quoted })
+	SzBotInc.sendMessage(jid, { contacts: { displayName: `${list.length} Contact`, contacts: list }, ...opts }, { quoted })
     }
 
-XeonBotInc.setStatus = (status) => {
-XeonBotInc.query({
+SzBotInc.setStatus = (status) => {
+SzBotInc.query({
 tag: 'iq',
 attrs: {
 to: '@s.whatsapp.net',
@@ -419,14 +419,14 @@ content: Buffer.from(status, 'utf-8')
 return status
 }
 
-XeonBotInc.public = true
+SzBotInc.public = true
 
-XeonBotInc.sendImage = async (jid, path, caption = '', quoted = '', options) => {
+SzBotInc.sendImage = async (jid, path, caption = '', quoted = '', options) => {
 let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
-return await XeonBotInc.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
+return await SzBotInc.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
 }
 
-XeonBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+SzBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
 let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let buffer
 if (options && (options.packname || options.author)) {
@@ -434,14 +434,14 @@ buffer = await writeExifImg(buff, options)
 } else {
 buffer = await imageToWebp(buff)
 }
-await XeonBotInc.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+await SzBotInc.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
 .then( response => {
 fs.unlinkSync(buffer)
 return response
 })
 }
 
-XeonBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+SzBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
 let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let buffer
 if (options && (options.packname || options.author)) {
@@ -449,11 +449,11 @@ buffer = await writeExifVid(buff, options)
 } else {
 buffer = await videoToWebp(buff)
 }
-await XeonBotInc.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
+await SzBotInc.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
 return buffer
 }
 
-XeonBotInc.copyNForward = async (jid, message, forceForward = false, options = {}) => {
+SzBotInc.copyNForward = async (jid, message, forceForward = false, options = {}) => {
 let vtype
 if (options.readViewOnce) {
 message.message = message.message && message.message.ephemeralMessage && message.message.ephemeralMessage.message ? message.message.ephemeralMessage.message : (message.message || undefined)
@@ -483,11 +483,11 @@ contextInfo: {
 }
 } : {})
 } : {})
-await XeonBotInc.relayMessage(jid, waMessage.message, { messageId:  waMessage.key.id })
+await SzBotInc.relayMessage(jid, waMessage.message, { messageId:  waMessage.key.id })
 return waMessage
 }
 
-XeonBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+SzBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
 let quoted = message.msg ? message.msg : message
 let mime = (message.msg || message).mimetype || ''
 let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -502,7 +502,7 @@ await fs.writeFileSync(trueFileName, buffer)
 return trueFileName
 }
 
-XeonBotInc.downloadMediaMessage = async (message) => {
+SzBotInc.downloadMediaMessage = async (message) => {
 let mime = (message.msg || message).mimetype || ''
 let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
 const stream = await downloadContentFromMessage(message, messageType)
@@ -513,7 +513,7 @@ buffer = Buffer.concat([buffer, chunk])
 return buffer
 }
 
-XeonBotInc.getFile = async (PATH, save) => {
+SzBotInc.getFile = async (PATH, save) => {
 let res
 let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)
 let type = await FileType.fromBuffer(data) || {
@@ -528,8 +528,8 @@ size: await getSizeMedia(data),
 ...type,
 data}}
 
-XeonBotInc.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
-let types = await XeonBotInc.getFile(path, true)
+SzBotInc.sendMedia = async (jid, path, fileName = '', caption = '', quoted = '', options = {}) => {
+let types = await SzBotInc.getFile(path, true)
 let { mime, ext, res, data, filename } = types
 if (res && res.status !== 200 || file.length <= 65536) {
 try { throw { json: JSON.parse(file.toString()) } }
@@ -547,14 +547,14 @@ else if (/image/.test(mime)) type = 'image'
 else if (/video/.test(mime)) type = 'video'
 else if (/audio/.test(mime)) type = 'audio'
 else type = 'document'
-await XeonBotInc.sendMessage(jid, { [type]: { url: pathFile }, caption, mimetype, fileName, ...options }, { quoted, ...options })
+await SzBotInc.sendMessage(jid, { [type]: { url: pathFile }, caption, mimetype, fileName, ...options }, { quoted, ...options })
 return fs.promises.unlink(pathFile)}
 
-XeonBotInc.sendText = (jid, text, quoted = '', options) => XeonBotInc.sendMessage(jid, { text: text, ...options }, { quoted })
+SzBotInc.sendText = (jid, text, quoted = '', options) => SzBotInc.sendMessage(jid, { text: text, ...options }, { quoted })
 
-XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store)
+SzBotInc.serializeM = (m) => smsg(SzBotInc, m, store)
 
-XeonBotInc.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
+SzBotInc.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
 let buttonMessage = {
 text,
 footer,
@@ -562,11 +562,11 @@ buttons,
 headerType: 2,
 ...options
 }
-XeonBotInc.sendMessage(jid, buttonMessage, { quoted, ...options })
+SzBotInc.sendMessage(jid, buttonMessage, { quoted, ...options })
 }
 
-XeonBotInc.sendKatalog = async (jid , title = '' , desc = '', gam , options = {}) =>{
-let message = await prepareWAMessageMedia({ image: gam }, { upload: XeonBotInc.waUploadToServer })
+SzBotInc.sendKatalog = async (jid , title = '' , desc = '', gam , options = {}) =>{
+let message = await prepareWAMessageMedia({ image: gam }, { upload: SzBotInc.waUploadToServer })
 const tod = generateWAMessageFromContent(jid,
 {"productMessage": {
 "product": {
@@ -583,10 +583,10 @@ const tod = generateWAMessageFromContent(jid,
 "businessOwnerJid": `${ownernumber}@s.whatsapp.net`
 }
 }, options)
-return XeonBotInc.relayMessage(jid, tod.message, {messageId: tod.key.id})
+return SzBotInc.relayMessage(jid, tod.message, {messageId: tod.key.id})
 } 
 
-XeonBotInc.send5ButLoc = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
+SzBotInc.send5ButLoc = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
 var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
 templateMessage: {
 hydratedTemplate: {
@@ -598,10 +598,10 @@ hydratedTemplate: {
 }
 }
 }), options)
-XeonBotInc.relayMessage(jid, template.message, { messageId: template.key.id })
+SzBotInc.relayMessage(jid, template.message, { messageId: template.key.id })
 }
 
-XeonBotInc.sendButImg = async (jid, path, teks, fke, but) => {
+SzBotInc.sendButImg = async (jid, path, teks, fke, but) => {
 let img = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
 let fjejfjjjer = {
 image: img, 
@@ -612,7 +612,7 @@ footer: fke,
 buttons: but,
 headerType: 4,
 }
-XeonBotInc.sendMessage(jid, fjejfjjjer, { quoted: m })
+SzBotInc.sendMessage(jid, fjejfjjjer, { quoted: m })
 }
 
             /**
