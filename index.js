@@ -625,8 +625,8 @@ SzBotInc.sendMessage(jid, fjejfjjjer, { quoted: m })
              * @param {Boolean} ptt
              * @param {Object} options
              */
-XeonBotInc.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
-                let type = await XeonBotInc.getFile(path, true)
+SzBotInc.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt = false, options = {}) => {
+                let type = await SzBotInc.getFile(path, true)
                 let { res, data: file, filename: pathFile } = type
                 if (res && res.status !== 200 || file.length <= 65536) {
                     try { throw { json: JSON.parse(file.toString()) } }
@@ -670,19 +670,19 @@ XeonBotInc.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt
                  */
                 let m
                 try {
-                    m = await XeonBotInc.sendMessage(jid, message, { ...opt, ...options })
+                    m = await SzBotInc.sendMessage(jid, message, { ...opt, ...options })
                 } catch (e) {
                     console.error(e)
                     m = null
                 } finally {
-                    if (!m) m = await XeonBotInc.sendMessage(jid, { ...message, [mtype]: file }, { ...opt, ...options })
+                    if (!m) m = await SzBotInc.sendMessage(jid, { ...message, [mtype]: file }, { ...opt, ...options })
                     file = null // releasing the memory
                     return m
                 }
             }
 
-//XeonBotInc.sendFile = async (jid, media, options = {}) => {
-        //let file = await XeonBotInc.getFile(media)
+//ScBotInc.sendFile = async (jid, media, options = {}) => {
+        //let file = await SzBotInc.getFile(media)
         //let mime = file.ext, type
         //if (mime == "mp3") {
           //type = "audio"
@@ -693,28 +693,28 @@ XeonBotInc.sendFile = async (jid, path, filename = '', caption = '', quoted, ptt
         //else if (mime == "webp") type = "sticker"
         //else if (mime == "mp4") type = "video"
         //else type = "document"
-        //return XeonBotInc.sendMessage(jid, { [type]: file.data, ...options }, { ...options })
+        //return SzBotInc.sendMessage(jid, { [type]: file.data, ...options }, { ...options })
       //}
 
-XeonBotInc.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+SzBotInc.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
       let mime = '';
       let res = await axios.head(url)
       mime = res.headers['content-type']
       if (mime.split("/")[1] === "gif") {
-     return XeonBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options}, { quoted: quoted, ...options})
+     return SzBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options}, { quoted: quoted, ...options})
       }
       let type = mime.split("/")[0]+"Message"
       if(mime === "application/pdf"){
-     return XeonBotInc.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options}, { quoted: quoted, ...options })
+     return SzBotInc.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options}, { quoted: quoted, ...options })
       }
       if(mime.split("/")[0] === "image"){
-     return XeonBotInc.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options}, { quoted: quoted, ...options})
+     return SzBotInc.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options}, { quoted: quoted, ...options})
       }
       if(mime.split("/")[0] === "video"){
-     return XeonBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options}, { quoted: quoted, ...options })
+     return SzBotInc.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options}, { quoted: quoted, ...options })
       }
       if(mime.split("/")[0] === "audio"){
-     return XeonBotInc.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options}, { quoted: quoted, ...options })
+     return SzBotInc.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options}, { quoted: quoted, ...options })
       }
       }
       
@@ -725,13 +725,13 @@ XeonBotInc.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
      * @param [*] values 
      * @returns 
      */
-    XeonBotInc.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return XeonBotInc.sendMessage(jid, { poll: { name, values, selectableCount }}) }
+    SzBotInc.sendPoll = (jid, name = '', values = [], selectableCount = 1) => { return SzBotInc.sendMessage(jid, { poll: { name, values, selectableCount }}) }
 
-return XeonBotInc
+return SzBotInc
 
 }
 
-XeonBotIncBot()
+SzBotIncBot()
 
 process.on('uncaughtException', function (err) {
 console.log('Caught exception: ', err)
