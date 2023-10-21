@@ -131,41 +131,41 @@ start('2',colors.bold.white('\n\nWaiting for New Messages..'))
 SzBotInc.ev.on('creds.update', await saveCreds)
 
     // Anti Call
-    SzBotInc.ev.on('call', async (kenvofc) => {
+    SzBotInc.ev.on('call', async (Kenvofc) => {
     let botNumber = await SzBotInc.decodeJid(SzBotInc.user.id)
     let serizawaBotNum = db.settings[botNumber].anticall
     if (!serizawaBotNum) return
-    console.log(XeonPapa)
-    for (let XeonFucks of XeonPapa) {
-    if (XeonFucks.isGroup == false) {
-    if (XeonFucks.status == "offer") {
-    let XeonBlokMsg = await XeonBotInc.sendTextWithMentions(XeonFucks.from, `*${XeonBotInc.user.name}* can't receive ${XeonFucks.isVideo ? `video` : `voice` } call. Sorry @${XeonFucks.from.split('@')[0]} you will be blocked. If accidentally please contact the owner to be unblocked !`)
-    XeonBotInc.sendContact(XeonFucks.from, global.owner, XeonBlokMsg)
+    console.log(Kenvofc)
+    for (let KenvFucks of Kenvofc) {
+    if (KenvFucks.isGroup == false) {
+    if (KenvFucks.status == "offer") {
+    let KenvBlokMsg = await SzBotInc.sendTextWithMentions(KenvFucks.from, `*${SzBotInc.user.name}* can't receive ${KenvFucks.isVideo ? `video` : `voice` } call. Sorry @${KenvFucks.from.split('@')[0]} you will be blocked. If accidentally please contact the owner to be unblocked !`)
+    SzBotInc.sendContact(KenvFucks.from, global.owner, KenvBlokMsg)
     await sleep(8000)
-    await XeonBotInc.updateBlockStatus(XeonFucks.from, "block")
+    await SzBotInc.updateBlockStatus(KenvFucks.from, "block")
     }
     }
     }
     })
 
-XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
+SzBotInc.ev.on('messages.upsert', async chatUpdate => {
 try {
 const kay = chatUpdate.messages[0]
 if (!kay.message) return
 kay.message = (Object.keys(kay.message)[0] === 'ephemeralMessage') ? kay.message.ephemeralMessage.message : kay.message
 if (kay.key && kay.key.remoteJid === 'status@broadcast')  {
-await XeonBotInc.readMessages([kay.key]) }
-if (!XeonBotInc.public && !kay.key.fromMe && chatUpdate.type === 'notify') return
+await SzBotInc.readMessages([kay.key]) }
+if (!SzBotInc.public && !kay.key.fromMe && chatUpdate.type === 'notify') return
 if (kay.key.id.startsWith('BAE5') && kay.key.id.length === 16) return
-const m = smsg(XeonBotInc, kay, store)
-require('./XeonCheems8')(XeonBotInc, m, chatUpdate, store)
+const m = smsg(SzBotInc, kay, store)
+require('./Serizawav1')(SzBotInc, m, chatUpdate, store)
 } catch (err) {
 console.log(err)}})
 
 	// detect group update
-		XeonBotInc.ev.on("groups.update", async (json) => {
+		SzBotInc.ev.on("groups.update", async (json) => {
 			try {
-ppgroup = await XeonBotInc.profilePictureUrl(anu.id, 'image')
+ppgroup = await SzBotInc.profilePictureUrl(anu.id, 'image')
 } catch (err) {
 ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
 }
@@ -173,61 +173,61 @@ ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
 			const res = json[0];
 			if (res.announce == true) {
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, {
-					text: `「 Group Settings Change 」\n\nGroup has been closed by admin, Now only admins can send messages !`,
+				SzBotInc.sendMessage(res.id, {
+					text: `「 Paramètres du groupe modifiés  」\n\nLe groupe a été fermé par un admin, maintenant seuls les admins peuvent envoyer des messages !`,
 				});
 			} else if (res.announce == false) {
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, {
-					text: `「 Group Settings Change 」\n\nThe group has been opened by admin, Now participants can send messages !`,
+				SzBotInc.sendMessage(res.id, {
+					text: `「 paramètres du groupe modifiés 」\n\nLe groupe a été ouvert par un admin, Maintenant tous les participants peuvent envoyer des messages !`,
 				});
 			} else if (res.restrict == true) {
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, {
-					text: `「 Group Settings Change 」\n\nGroup info has been restricted, Now only admin can edit group info !`,
+				SzBotInc.sendMessage(res.id, {
+					text: `「 paramètres du groupe modifiés 」\n\nLes infos du groupe ont été verouillées, Maintenant seuls les admins peux modifier les infos du groupe  !`,
 				});
 			} else if (res.restrict == false) {
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, {
+				SzBotInc.sendMessage(res.id, {
 					text: `「 Group Settings Change 」\n\nGroup info has been opened, Now participants can edit group info !`,
 				});
 			} else if(!res.desc == ''){
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, { 
-					text: `「 Group Settings Change 」\n\n*Group description has been changed to*\n\n${res.desc}`,
+				SzBotInc.sendMessage(res.id, { 
+					text: `「 Paramètres du groupe modifiés 」\n\n*La description du groupe a été modifiée en*\n\n${res.desc}`,
 				});
       } else {
 				await sleep(2000)
-				XeonBotInc.sendMessage(res.id, {
-					text: `「 Group Settings Change 」\n\n*Group name has been changed to*\n\n*${res.subject}*`,
+				SzBotInc.sendMessage(res.id, {
+					text: `「 Paramètres du groupe modifiés 」\n\n*Le nom du groupe a été modifié en*\n\n*${res.subject}*`,
 				});
 			} 
 			
 		});
 		
-XeonBotInc.ev.on('group-participants.update', async (anu) => {
+SzBotInc.ev.on('group-participants.update', async (anu) => {
 console.log(anu)
 try {
-let metadata = await XeonBotInc.groupMetadata(anu.id)
+let metadata = await SzBotInc.groupMetadata(anu.id)
 let participants = anu.participants
 for (let num of participants) {
 try {
-ppuser = await XeonBotInc.profilePictureUrl(num, 'image')
+ppuser = await SzBotInc.profilePictureUrl(num, 'image')
 } catch (err) {
 ppuser = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60'
 }
 try {
-ppgroup = await XeonBotInc.profilePictureUrl(anu.id, 'image')
+ppgroup = await SzBotInc.profilePictureUrl(anu.id, 'image')
 } catch (err) {
 ppgroup = 'https://i.ibb.co/RBx5SQC/avatar-group-large-v2.png?q=60'
 }
 //welcome\\
 memb = metadata.participants.length
-XeonWlcm = await getBuffer(ppuser)
-XeonLft = await getBuffer(ppuser)
+SzWlcm = await getBuffer(ppuser)
+SzLft = await getBuffer(ppuser)
                 if (anu.action == 'add') {
-                const xeonbuffer = await getBuffer(ppuser)
-                let xeonName = num
+                const szbuffer = await getBuffer(ppuser)
+                let szName = num
                 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 	            const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 	            const xmembers = metadata.participants.length
