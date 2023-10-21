@@ -228,21 +228,21 @@ SzLft = await getBuffer(ppuser)
                 if (anu.action == 'add') {
                 const szbuffer = await getBuffer(ppuser)
                 let szName = num
-                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-	            const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
+                const xtime = moment.tz('West Africa/Yaoundé').format('HH:mm:ss')
+	            const xdate = moment.tz('West Africa/Yaoundé').format('DD/MM/YYYY')
 	            const xmembers = metadata.participants.length
-                xeonbody = `┌─❖
+                Szbody = `┌─❖
 │「 𝗛𝗶 👋 」
-└┬❖ 「  @${xeonName.split("@")[0]}  」
-   │✑  𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 
+└┬❖ 「  @${SzName.split("@")[0]}  」
+   │✑  𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 
    │✑  ${metadata.subject}
-   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
+   │✑  𝑴𝒆𝒎𝒃𝒆𝒓 : 
    │✑ ${xmembers}th
-   │✑  𝗝𝗼𝗶𝗻𝗲𝗱 : 
+   │✑  𝑱𝒐𝒊𝒏𝒆𝒅 : 
    │✑ ${xtime} ${xdate}
    └───────────────┈ ⳹`
-XeonBotInc.sendMessage(anu.id,
- { text: xeonbody,
+SzBotInc.sendMessage(anu.id,
+ { text: szbody,
  contextInfo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
@@ -251,26 +251,26 @@ XeonBotInc.sendMessage(anu.id,
 "body": `${ownername}`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": XeonWlcm,
+"thumbnail": SzWlcm,
 "sourceUrl": `${wagc}`}}})
                 } else if (anu.action == 'remove') {
-                	const xeonbuffer = await getBuffer(ppuser)
-                    const xeontime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-	                const xeondate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-                	let xeonName = num
-                    const xeonmembers = metadata.participants.length
-                    xeonbody = `┌─❖
-│「 𝗚𝗼𝗼𝗱𝗯𝘆𝗲 👋 」
-└┬❖ 「 @${xeonName.split("@")[0]}  」
-   │✑  𝗟𝗲𝗳𝘁 
+                	const szbuffer = await getBuffer(ppuser)
+                    const sztime = moment.tz('West Africa/Yaoundé').format('HH:mm:ss')
+	                const szdate = moment.tz('West Africa/Yaoundé').format('DD/MM/YYYY')
+                	let szName = num
+                    const szmembers = metadata.participants.length
+                    szbody = `┌─❖
+│「 𝑻𝒖 𝒏𝒆 𝒏𝒐𝒖𝒔 𝒎𝒂𝒏𝒒𝒖𝒆𝒓𝒂𝒔 𝒑𝒂𝒔 👋 」
+└┬❖ 「 @${szName.split("@")[0]}  」
+   │✑  𝑳𝒆𝒇𝒕 
    │✑ ${metadata.subject}
-   │✑  𝗠𝗲𝗺𝗯𝗲𝗿 : 
-   │✑ ${xeonmembers}th
-   │✑  𝗧𝗶𝗺𝗲 : 
-   │✑  ${xeontime} ${xeondate}
+   │✑  𝑴𝒆𝒎𝒃𝒆𝒓 : 
+   │✑ ${szmembers}th
+   │✑  𝑻𝒊𝒎𝒆 : 
+   │✑  ${sztime} ${szdate}
    └───────────────┈ ⳹`
-XeonBotInc.sendMessage(anu.id,
- { text: xeonbody,
+SzBotInc.sendMessage(anu.id,
+ { text: szbody,
  contextInfo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
@@ -279,17 +279,17 @@ XeonBotInc.sendMessage(anu.id,
 "body": `${ownername}`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": XeonLft,
+"thumbnail": SzLft,
 "sourceUrl": `${wagc}`}}})
 } else if (anu.action == 'promote') {
-const xeonbuffer = await getBuffer(ppuser)
-const xeontime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const xeondate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-let xeonName = num
-xeonbody = ` 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘀🎉 @${xeonName.split("@")[0]}, you have been *promoted* to *admin* 🥳`
-   XeonBotInc.sendMessage(anu.id,
- { text: xeonbody,
- contextInfo:{
+const szbuffer = await getBuffer(ppuser)
+const sztime = moment.tz('West Africa/Yaoundé').format('HH:mm:ss')
+const szdate = moment.tz('West Africa/Yaoundé').format('DD/MM/YYYY')
+let szName = num
+szbody = ` 𝑭𝒆𝒍𝒊𝒄𝒊𝒕𝒂𝒕𝒊𝒐𝒏𝒔🎉 @${szName.split("@")[0]}, 𝑻𝒖 𝒂𝒔 𝒆́𝒕𝒆́ 𝒑𝒓𝒐𝒎𝒖(𝒆) 𝒂𝒅𝒎𝒊𝒏𝒔 𝒖𝒏 𝒋𝒐𝒖𝒓 𝒋𝒆 𝒔𝒆𝒓𝒂𝒊 𝒂𝒖𝒔𝒔𝒊 𝒄𝒐𝒎𝒎𝒆 𝒕𝒐𝒊* 🥳` 
+   SzBotInc.sendMessage(anu.id,
+ { text: szbody,
+ contebbo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
  "containsAutoReply": true,
@@ -297,16 +297,16 @@ xeonbody = ` 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘀🎉 @${xeonName.split("@")[0]}, yo
 "body": `${ownername}`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": XeonWlcm,
+"thumbnail": SzWlcm,
 "sourceUrl": `${wagc}`}}})
 } else if (anu.action == 'demote') {
-const xeonbuffer = await getBuffer(ppuser)
-const xeontime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const xeondate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
-let xeonName = num
-xeonbody = `𝗢𝗼𝗽𝘀‼️ @${xeonName.split("@")[0]}, you have been *demoted* from *admin* 😬`
-XeonBotInc.sendMessage(anu.id,
- { text: xeonbody,
+const szbuffer = await getBuffer(ppuser)
+const sztime = moment.tz('West Africa/Yaoundé').format('HH:mm:ss')
+const szdate = moment.tz('West Africa/Yaoundé').format('DD/MM/YYYY')
+let szName = num
+szbody = `𝑯𝒂𝒉𝒂𝒉𝒂𝒉𝒂𝒉𝒂🤣🤣🤣‼️ @${szName.split("@")[0]}, 𝑽𝒐𝒖𝒔 𝒂𝒗𝒆𝒛 𝒆́𝒕𝒆́ 𝒅𝒆́𝒎𝒊𝒔 𝒅𝒆 𝒗𝒐𝒔 𝒇𝒐𝒏𝒄𝒕𝒊𝒐𝒏𝒔 𝑯𝒂𝒉𝒂𝒉𝒂𝒉𝒂 𝒒𝒖'𝒆𝒔𝒕-𝒄𝒆 𝒒𝒖𝒆 𝒋𝒆 𝒔𝒖𝒊𝒔 𝒅𝒓𝒐̂𝒍𝒆😂😂😂🤣😭`
+SzBotInc.sendMessage(anu.id,
+ { text: szbody,
  contextInfo:{
  mentionedJid:[num],
  "externalAdReply": {"showAdAttribution": true,
@@ -315,7 +315,7 @@ XeonBotInc.sendMessage(anu.id,
 "body": `${ownername}`,
  "previewType": "PHOTO",
 "thumbnailUrl": ``,
-"thumbnail": XeonLft,
+"thumbnail": SzLft,
 "sourceUrl": `${wagc}`}}})
 }
 }
