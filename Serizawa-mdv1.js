@@ -2305,95 +2305,96 @@ Please Type Below
 *${prefix}upvote* - to upvote
 *${prefix}downvote* -  to downvote
 *${prefix}deletevote* - to delete vote`
-            XeonBotInc.sendMessage(m.chat, {text: teks_vote, mentions: menvote}, {quoted:m})
+            SzBotInc.sendMessage(m.chat, {text: teks_vote, mentions: menvote}, {quoted:m})
 	    }
              break
                 case 'downvote': {
             if (!m.isGroup) return XeonStickGroup()
-            if (!(m.chat in vote)) return replygcxeon(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
+            if (!(m.chat in vote)) return replygcsz(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
-            if (wasVote) return replygcxeon('You have Voted')
+            if (wasVote) return replygcsz('You have Voted')
             vote[m.chat][2].push(m.sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `* VOTE *
 
 *Reason:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
+↡➳「 UPVOTE 」
+↡ 
+↡➳ Total: ${vote[m.chat][1].length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳
 
-┌〔 DOWNVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
+↡➳「 DOWNVOTE 」
+↡ 
+↡➳ Total: ${vote[m.chat][2].length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳
 
 Please Type Below
 *${prefix}upvote* - to upvote
 *${prefix}downvote* -  to downvote
 *${prefix}deletevote* - to delete vote`
-            XeonBotInc.sendMessage(m.chat, {text: teks_vote, mentions: menvote}, {quoted:m})
+            SzBotInc.sendMessage(m.chat, {text: teks_vote, mentions: menvote}, {quoted:m})
 	}
             break
                  
 case 'checkvote':
 if (!m.isGroup) return XeonStickGroup()
-if (!(m.chat in vote)) return replygcxeon(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
+if (!(m.chat in vote)) return replygcsz(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
 teks_vote = `* VOTE *
 
 *Reason:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${upvote.length}
+↡➳「 UPVOTE 」
+↡ 
+↡➳ Total: ${upvote.length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳➳✭
 
-┌〔 DOWNVOTE 〕
-│ 
-├ Total: ${devote.length}
+↡➳「DOWNVOTE 」
+↡
+↡
+↡➳ Total: ${devote.length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳➳✭
 
 *${prefix}deletevote* - to delete votes
 
 
-©${XeonBotInc.user.id}
+©${SzBotInc.user.id}
 `
-XeonBotInc.sendTextWithMentions(m.chat, teks_vote, m)
+SzBotInc.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
             if (!m.isGroup) return XeonStickGroup()
-            if (!(m.chat in vote)) return replygcxeon(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
+            if (!(m.chat in vote)) return replygcsz(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
             delete vote[m.chat]
-            replygcxeon('Successfully Deleted Vote Session In This Group')
+            replygcsz('Successfully Deleted Vote Session In This Group')
 	    }
             break
 case 'toonce': case 'toviewonce': { 
-if (!quoted) return replygcxeon(`Reply Image/Video`)
+if (!quoted) return replygcsz(`Reply Image/Video`)
 XeonStickWait()
 if (/image/.test(mime)) {
-anuan = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-XeonBotInc.sendMessage(m.chat, {image: {url:anuan}, caption: `Here you go!`, fileLength: "999", viewOnce : true},{quoted: m })
+anuan = await SzBotInc.downloadAndSaveMediaMessage(quoted)
+SzBotInc.sendMessage(m.chat, {image: {url:anuan}, caption: `Here you go!`, fileLength: "999", viewOnce : true},{quoted: m })
 } else if (/video/.test(mime)) {
-anuanuan = await XeonBotInc.downloadAndSaveMediaMessage(quoted)
-XeonBotInc.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, fileLength: "99999999", viewOnce : true},{quoted: m })
+anuanuan = await SzBotInc.downloadAndSaveMediaMessage(quoted)
+SzBotInc.sendMessage(m.chat, {video: {url:anuanuan}, caption: `Here you go!`, fileLength: "99999999", viewOnce : true},{quoted: m })
 }
 }
 break
 case 'fliptext': {
-if (args.length < 1) return replygcxeon(`Example:\n${prefix}fliptext ${ownername}`)
+if (args.length < 1) return replygcsz(`Example:\n${prefix}fliptext ${ownername}`)
 quere = args.join(" ")
 flipe = quere.split('').reverse().join('')
-replygcxeon(`\`\`\`「 FLIP TEXT 」\`\`\`\n*•> Normal :*\n${quere}\n*•> Flip :*\n${flipe}`)
+replygcsz(`\`\`\`「 FLIP TEXT 」\`\`\`\n*•> Normal :*\n${quere}\n*•> Flip :*\n${flipe}`)
 }
 break
             case 'listpc': {
@@ -2403,17 +2404,17 @@ break
                      let nama = store.messages[i].array[0].pushName
                      teks += `${themeemoji} *Name :* ${nama}\n${themeemoji} *User :* @${i.split('@')[0]}\n${themeemoji} *Chat :* https://wa.me/${i.split('@')[0]}\n\n────────────────────────\n\n`
                  }
-                 XeonBotInc.sendTextWithMentions(m.chat, teks, m)
+                 SzBotInc.sendTextWithMentions(m.chat, teks, m)
              }
              break
                 case 'listgc': {
                  let anulistg = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
                  let teks = `${themeemoji} *GROUP CHAT LIST*\n\nTotal Group : ${anulistg.length} Group\n\n`
                  for (let i of anulistg) {
-                     let metadata = await XeonBotInc.groupMetadata(i)
+                     let metadata = await SzBotInc.groupMetadata(i)
                      teks += `${themeemoji} *Name :* ${metadata.subject}\n${themeemoji} *Owner :* ${metadata.owner !== undefined ? '@' + metadata.owner.split`@`[0] : 'Unknown'}\n${themeemoji} *ID :* ${metadata.id}\n${themeemoji} *Made :* ${moment(metadata.creation * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY HH:mm:ss')}\n${themeemoji} *Member :* ${metadata.participants.length}\n\n────────────────────────\n\n`
                  }
-                 XeonBotInc.sendTextWithMentions(m.chat, teks, m)
+                 SzBotInc.sendTextWithMentions(m.chat, teks, m)
              }
              break
              case 'ping': case 'botstatus': case 'statusbot': case 'p': {
@@ -2460,65 +2461,65 @@ ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type =>
 _CPU Core(s) Usage (${cpus.length} Core CPU)_
 ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}`).join('\n\n')}` : ''}
                 `.trim()
-                replygcxeon(respon)
+                replygcsz(respon)
             }
             break
             case 'bctext': case 'broadcasttext': case 'broadcast': {
-			    if (!XeonTheCreator) return XeonStickOwner()
-		            if (!q) return replygcxeon(`Enter text`)
+			    if (!KenvTheCreator) return XeonStickOwner()
+		            if (!q) return replygcsz(`Enter text`)
 		                            const data = await store.chats.all()
                             for (let i of data) {
-                               XeonBotInc.sendMessage(i.id, {text: `${ownername}'s Broadcast\n\nMessage : ${q}` })
+                               SzBotInc.sendMessage(i.id, {text: `${ownername}'s Broadcast\n\nMessage : ${q}` })
                                await sleep(1000)
                             }
                             }
                             break
                             case 'broadcastimage': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
-if(!XeonTheCreator) return XeonStickOwner()
-        if (!q) return replygcxeon(`Enter text`)
-        let getGroups = await XeonBotInc.groupFetchAllParticipating()
+if(!KenvTheCreator) return XeonStickOwner()
+        if (!q) return replygcsz(`Enter text`)
+        let getGroups = await SzBotInc.groupFetchAllParticipating()
         let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
-        let xeoncast = groups.map(v => v.id)
-        replygcxeon(` Broadcasting in ${xeoncast.length} Group Chat, in ${xeoncast.length * 1.5} seconds`)
-        for (let i of xeoncast) {
+        let szcast = groups.map(v => v.id)
+        replygcsz(` Broadcasting in ${szcast.length} Group Chat, in ${szcast.length * 1.5} seconds`)
+        for (let i of szcast) {
 let txt = `${ownername}'s Broadcast\n\nMessage : ${q}`
 if(/image/.test(mime)) {
 let media = await quoted.download()
-await XeonBotInc.sendMessage(i, { image:media,  caption: txt,mentions:participants.map(a => a.id) })
+await SzBotInc.sendMessage(i, { image:media,  caption: txt,mentions:participants.map(a => a.id) })
 }
 if(/video/.test(mime)){
 let media = await quoted.download()
-await XeonBotInc.sendMessage(i, { video:media,  caption: txt, mentions:participants.map(a => a.id) })
+await SzBotInc.sendMessage(i, { video:media,  caption: txt, mentions:participants.map(a => a.id) })
 }
             }
-        replygcxeon(`Successfuly Broadcasted in ${xeoncast.length} Groups`)      
+        replygcsz(`Successfuly Broadcasted in ${szcast.length} Groups`)      
         break
 case 'block': case 'ban': {
-		if (!XeonTheCreator) return XeonStickOwner()
+		if (!KenvTheCreator) return XeonStickOwner()
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.updateBlockStatus(users, 'block')
-		await replygcxeon(`Done`)
+		await SzBotInc.updateBlockStatus(users, 'block')
+		await replygcsz(`Done`)
 	}
 	break
         case 'unblock': case 'unban': {
-		if (!XeonTheCreator) return XeonStickOwner()
+		if (!KenvTheCreator) return XeonStickOwner()
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await XeonBotInc.updateBlockStatus(users, 'unblock')
-		await replygcxeon(`Done`)
+		await SzBotInc.updateBlockStatus(users, 'unblock')
+		await replygcsz(`Done`)
 	}
 	break
 case 'listblock': case 'listban': case 'blocklist': case 'banlist': {
 	const lisben = "Total Block: " + banUser.length
-	replygcxeon(lisben)
+	replygcsz(lisben)
 	}
 	break
 case 'afk': {
 if (!m.isGroup) return XeonStickGroup()
-if (!text) return replygcxeon(`Example ${prefix+command} want to sleep`)
+if (!text) return replygcsz(`Example ${prefix+command} want to sleep`)
 let user = global.db.users[m.sender]
 user.afkTime = + new Date
 user.afkReason = args.join(" ")
-replygcxeon(`${m.pushName} Has Gone AFK\nReason : ${args.join(" ") ? args.join(" ") : ''}`)
+replygcsz(`${m.pushName} Has Gone AFK\nReason : ${args.join(" ") ? args.join(" ") : ''}`)
 }
 break
 case 'resetlinkgc':
@@ -2531,50 +2532,50 @@ case 'resetgclink':
 case 'resetgruplink': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
-XeonBotInc.groupRevokeInvite(m.chat)
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
+SzBotInc.groupRevokeInvite(m.chat)
 }
 break
             case 'react': {
-                if (!XeonTheCreator) return XeonStickOwner()
+                if (!KenvTheCreator) return XeonStickOwner()
                 reactionMessage = {
                     react: {
                         text: args[0],
                         key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
                     }
                 }
-                XeonBotInc.sendMessage(m.chat, reactionMessage)
+                SzBotInc.sendMessage(m.chat, reactionMessage)
             }
             break
 case 'group': case 'editinfo': {
 if (!m.isGroup) return XeonStickGroup()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!q) return replygcxeon(`Send orders ${command} _options_\nOptions : close & open\nExample : ${command} close`)
+if (!q) return replygcsz(`Send orders ${command} _options_\nOptions : close & open\nExample : ${command} close`)
 if (args[0] == 'close') {
-XeonBotInc.groupSettingUpdate(from, 'announcement')
-replygcxeon(`Success Allows Only Admins To Send Messages To This Group`)
+SzBotInc.groupSettingUpdate(from, 'announcement')
+replygcsz(`Success Allows Only Admins To Send Messages To This Group`)
 } else if (args[0] == 'open') {
-XeonBotInc.groupSettingUpdate(from, 'not_announcement')
-replygcxeon(`Success Allows All Participants To Send Messages To This Group`)
+SzBotInc.groupSettingUpdate(from, 'not_announcement')
+replygcsz(`Success Allows All Participants To Send Messages To This Group`)
 } else {
-replygcxeon(`Type Command ${command} _pptions_\nOptions : Close & Open\nExample : ${command} close`)
+replygcsz(`Type Command ${command} _pptions_\nOptions : Close & Open\nExample : ${command} close`)
 }}
 break
 case 'autostickergc':
             case 'autosticker':
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
-if (args.length < 1) return replygcxeon('type auto sticker on to enable\ntype auto sticker off to disable')
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
+if (args.length < 1) return replygcsz('type auto sticker on to enable\ntype auto sticker off to disable')
 if (args[0]  === 'on'){
-if (isAutoSticker) return replygcxeon(`Already activated`)
+if (isAutoSticker) return replygcsz(`Already activated`)
 autosticker.push(from)
 fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
-replygcxeon('autosticker activated')
+replygcsz('autosticker activated')
 } else if (args[0] === 'off'){
 let anuticker1 = autosticker.indexOf(from)
 autosticker.splice(anuticker1, 1)
 fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
-replygcxeon('auto sticker deactivated')
+replygcsz('auto sticker deactivated')
 }
 break
 case 'antivirus': case 'antivirtex': {
@@ -2582,52 +2583,52 @@ if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
 if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (antiVirtex) return replygcxeon('Already activated')
+if (antiVirtex) return replygcsz('Already activated')
 ntvirtex.push(from)
 fs.writeFileSync('./database/antivirus.json', JSON.stringify(ntvirtex))
-replygcxeon('Success in turning on antivirus in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on antivirus in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo body is allowed to send virus in this group, member who send will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNo body is allowed to send virus in this group, member who send will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!antiVirtex) return replygcxeon('Already deactivated')
+if (!antiVirtex) return replygcsz('Already deactivated')
 let off = ntvirtex.indexOf(from)
 ntvirtex.splice(off, 1)
 fs.writeFileSync('./database/antivirus.json', JSON.stringify(ntvirtex))
-replygcxeon('Success in turning off antivirus this group')
+replygcsz('Success in turning off antivirus this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
 case 'nsfw': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiNsfw) return replygcxeon('Already activated')
+if (AntiNsfw) return replygcsz('Already activated')
 ntnsfw.push(from)
 fs.writeFileSync('./database/nsfw.json', JSON.stringify(ntnsfw))
-replygcxeon('Success in turning on nsfw in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on nsfw in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNsfw(not safe for work) feature has been enabled in this group, which means one can access sexual graphics from the bot!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nNsfw(not safe for work) feature has been enabled in this group, which means one can access sexual graphics from the bot!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiNsfw) return replygcxeon('Already deactivated')
+if (!AntiNsfw) return replygcsz('Already deactivated')
 let off = ntnsfw.indexOf(from)
 ntnsfw.splice(off, 1)
 fs.writeFileSync('./database/nsfw.json', JSON.stringify(ntnsfw))
-replygcxeon('Success in turning off nsfw in this group')
+replygcsz('Success in turning off nsfw in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
@@ -2636,52 +2637,52 @@ if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
 if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkYoutubeVid) return replygcxeon('Already activated')
+if (AntiLinkYoutubeVid) return replygcsz('Already activated')
 ntilinkytvid.push(from)
 fs.writeFileSync('./database/antilinkytvideo.json', JSON.stringify(ntilinkytvid))
-replygcxeon('Success in turning on youtube video antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on youtube video antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the youtube video link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the youtube video link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkYoutubeVid) return replygcxeon('Already deactivated')
+if (!AntiLinkYoutubeVid) return replygcsz('Already deactivated')
 let off = ntilinkytvid.indexOf(from)
 ntilinkytvid.splice(off, 1)
 fs.writeFileSync('./database/antilinkytvideo.json', JSON.stringify(ntilinkytvid))
-replygcxeon('Success in turning off youtube video antilink in this group')
+replygcsz('Success in turning off youtube video antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
     case 'antilinkyoutubech': case 'antilinkyoutubechannel': case 'antilinkytch': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !SzTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkYoutubeChannel) return replygcxeon('Already activated')
+if (AntiLinkYoutubeChannel) return replygcsz('Already activated')
 ntilinkytch.push(from)
 fs.writeFileSync('./database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
-replygcxeon('Success in turning on youtube channel antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on youtube channel antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the youtube channel link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the youtube channel link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkYoutubeChannel) return replygcxeon('Already deactivated')
+if (!AntiLinkYoutubeChannel) return replygcsz('Already deactivated')
 let off = ntilinkytch.indexOf(from)
 fs.writeFileSync('./database/antilinkytchannel.json', JSON.stringify(ntilinkytch))
 ntilinkytch.splice(off, 1)
-replygcxeon('Success in turning off youtube channel antilink in this group')
+replygcsz('Success in turning off youtube channel antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
@@ -2690,79 +2691,79 @@ if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
 if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkInstagram) return replygcxeon('Already activated')
+if (AntiLinkInstagram) return replygcsz('Already activated')
 ntilinkig.push(from)
 fs.writeFileSync('./database/antilinkinstagram.json', JSON.stringify(ntilinkig))
-replygcxeon('Success in turning on instagram antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on instagram antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the instagram link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the instagram link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkInstagram) return replygcxeon('Already deactivated')
+if (!AntiLinkInstagram) return replygcsz('Already deactivated')
 let off = ntilinkig.indexOf(from)
 ntilinkig.splice(off, 1)
 fs.writeFileSync('./database/antilinkinstagram.json', JSON.stringify(ntilinkig))
-replygcxeon('Success in turning off instagram antilink in this group')
+replygcsz('Success in turning off instagram antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
         case 'antilinkfacebook': case 'antilinkfb': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkFacebook) return replygcxeon('Already activated')
+if (AntiLinkFacebook) return replygcsz('Already activated')
 ntilinkfb.push(from)
 fs.writeFileSync('./database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
-replygcxeon('Success in turning on facebook antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on facebook antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the facebook link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the facebook link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkFacebook) return replygcxeon('Already deactivated')
+if (!AntiLinkFacebook) return replygcsz('Already deactivated')
 let off = ntilinkfb.indexOf(from)
 ntilinkfb.splice(off, 1)
 fs.writeFileSync('./database/antilinkfacebook.json', JSON.stringify(ntilinkfb))
-replygcxeon('Success in turning off facebook antilink in this group')
+replygcsz('Success in turning off facebook antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
           case 'antilinktelegram': case 'antilinktg': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkTelegram) return replygcxeon('Already activated')
+if (AntiLinkTelegram) return replygcsz('Already activated')
 ntilinktg.push(from)
 fs.writeFileSync('./database/antilinktelegram.json', JSON.stringify(ntilinktg))
-replygcxeon('Success in turning on telegram antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on telegram antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the telegram link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the telegram link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkTelegram) return replygcxeon('Already deactivated')
+if (!AntiLinkTelegram) return replygcsz('Already deactivated')
 let off = ntilinktg.indexOf(from)
 ntilinktg.splice(off, 1)
 fs.writeFileSync('./database/antilinktelegram.json', JSON.stringify(ntilinktg))
-replygcxeon('Success in turning off telegram antilink in this group')
+replygcsz('Success in turning off telegram antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
@@ -2771,52 +2772,52 @@ if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
 if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkTiktok) return replygcxeon('Already activated')
+if (AntiLinkTiktok) return replygcsz('Already activated')
 ntilinktt.push(from)
 fs.writeFileSync('./database/antilinktiktok.json', JSON.stringify(ntilinktt))
-replygcxeon('Success in turning on tiktok antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on tiktok antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the tiktok link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the tiktok link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkTiktok) return replygcxeon('Already deactivated')
+if (!AntiLinkTiktok) return replygcsz('Already deactivated')
 let off = ntilinktt.indexOf(from)
 ntilinktt.splice(off, 1)
 fs.writeFileSync('./database/antilinktiktok.json', JSON.stringify(ntilinktt))
-replygcxeon('Success in turning off tiktok antilink in this group')
+replygcsz('Success in turning off tiktok antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
             case 'antilinktwt': case 'antilinktwitter': case 'antilinktwit': {
 if (!m.isGroup) return XeonStickGroup()
 if (!isBotAdmins) return XeonStickBotAdmin()
-if (!isAdmins && !XeonTheCreator) return XeonStickAdmin()
+if (!isAdmins && !KenvTheCreator) return XeonStickAdmin()
 if (args[0] === "on") {
-if (AntiLinkTwitter) return replygcxeon('Already activated')
+if (AntiLinkTwitter) return replygcsz('Already activated')
 ntilinktwt.push(from)
 fs.writeFileSync('./database/antilinktwitter.json', JSON.stringify(ntilinktwt))
-replygcxeon('Success in turning on twitter antilink in this group')
-var groupe = await XeonBotInc.groupMetadata(from)
+replygcsz('Success in turning on twitter antilink in this group')
+var groupe = await SzBotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-XeonBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the twitter link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+SzBotInc.sendMessage(from, {text: `\`\`\`「 ⚠️Warning⚠️ 」\`\`\`\n\nIf you're not an admin, don't send the twitter link in this group or u will be kicked immediately!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!AntiLinkTwitter) return replygcxeon('Already deactivated')
+if (!AntiLinkTwitter) return replygcsz('Already deactivated')
 let off = ntilinktwt.indexOf(from)
 ntilinktwt.splice(off, 1)
 fs.writeFileSync('./database/antilinktwitter.json', JSON.stringify(ntilinktwt))
-replygcxeon('Success in turning off twitter antilink in this group')
+replygcsz('Success in turning off twitter antilink in this group')
 } else {
-  await replygcxeon(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
+  await replygcsz(`Please Type The Option\n\nExample: ${prefix + command} on\nExample: ${prefix + command} off\n\non to enable\noff to disable`)
   }
   }
   break
