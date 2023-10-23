@@ -16,10 +16,10 @@ const anon = require('./lib/menfess')
 const scp1 = require('./scrape/scraper') 
 const scp2 = require('./scrape/scraperr')
 const scp3 = require('./scrape/scraperrr')
-const { XeonInstaMp4 } = require('./scrape/XeonInstaMp4')
-const { XeonIgImg } = require('./scrape/XeonIgImg')
-const { XeonFb } = require('./scrape/XeonFb')
-const { XeonTwitter } = require('./scrape/XeonTwitter')
+const { SeInstaMp4 } = require('./scrape/SzInstaMp4')
+const { SzIgImg } = require('./scrape/SzIgImg')
+const { SzFb } = require('./scrape/SzFb')
+const { SzTwitter } = require('./scrape/SzTwitter')
 const ffstalk = require('./scrape/ffstalk')
 const githubstalk = require('./scrape/githubstalk')
 const npmstalk = require('./scrape/npmstalk')
@@ -32,15 +32,12 @@ const vm = require('node:vm')
 const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 const owner = JSON.parse(fs.readFileSync('./database/owner.json'))
-const prem = JSON.parse(fs.readFileSync('./database/premium.json'))
-const xeonverifieduser = JSON.parse(fs.readFileSync('./database/user.json'))
-const VoiceNoteXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonvn.json'))
-const StickerXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonsticker.json'))
-const ImageXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonimage.json'))
-const VideoXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonvideo.json'))
-const BadXeon = JSON.parse(fs.readFileSync('./database/bad.json'))
+const kenvverifieduser = JSON.parse(fs.readFileSync('./database/user.json'))
+const VoiceNoteSz = JSON.parse(fs.readFileSync('./XeonMedia/database/szvn.json'))
+const ImageSz = JSON.parse(fs.readFileSync('./XeonMedia/database/szimage.json'))
+const VideoSz = JSON.parse(fs.readFileSync('./XeonMedia/database/szvideo.json'))
+const Badkenv = JSON.parse(fs.readFileSync('./database/bad.json'))
 
-let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'))
 let ntnsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
 let ntvirtex = JSON.parse(fs.readFileSync('./database/antivirus.json'))
 let nttoxic = JSON.parse(fs.readFileSync('./database/antitoxic.json'))
@@ -505,34 +502,34 @@ SzBotInc.sendMessage(from, { audio: teks, mimetype: 'audio/mp4', ptt: true }, { 
 }
 
 //autoreply
-for (let BhosdikaXeon of VoiceNoteXeon) {
-if (budy === BhosdikaXeon) {
-let audiobuffy = fs.readFileSync(`./XeonMedia/audio/${BhosdikaXeon}.mp3`)
-XeonBotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
+for (let BhosdikaSz of VoiceNoteSz) {
+if (budy === BhosdikaSz) {
+let audiobuffy = fs.readFileSync(`./XeonMedia/audio/${BhosdikaSz}.mp3`)
+SzBotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 }
 }
-for (let BhosdikaXeon of StickerXeon){
-if (budy === BhosdikaXeon){
-let stickerbuffy = fs.readFileSync(`./XeonMedia/sticker/${BhosdikaXeon}.webp`)
-XeonBotInc.sendMessage(m.chat, { sticker: stickerbuffy }, { quoted: m })
+for (let BhosdikaSz of StickerSz){
+if (budy === BhosdikaSz){
+let stickerbuffy = fs.readFileSync(`./XeonMedia/sticker/${BhosdikaSz}.webp`)
+SzBotInc.sendMessage(m.chat, { sticker: stickerbuffy }, { quoted: m })
 }
 }
-for (let BhosdikaXeon of ImageXeon){
-if (budy === BhosdikaXeon){
-let imagebuffy = fs.readFileSync(`./XeonMedia/image/${BhosdikaXeon}.jpg`)
-XeonBotInc.sendMessage(m.chat, { image: imagebuffy }, { quoted: m })
+for (let BhosdikaSz of ImageSz){
+if (budy === BhosdikaSz){
+let imagebuffy = fs.readFileSync(`./XeonMedia/image/${BhosdikaSz}.jpg`)
+SzBotInc.sendMessage(m.chat, { image: imagebuffy }, { quoted: m })
 }
 }
-for (let BhosdikaXeon of VideoXeon){
-if (budy === BhosdikaXeon){
-let videobuffy = fs.readFileSync(`./XeonMedia/video/${BhosdikaXeon}.mp4`)
-XeonBotInc.sendMessage(m.chat, { video: videobuffy }, { quoted: m })
+for (let BhosdikaSz of VideoSz){
+if (budy === BhosdikaSz){
+let videobuffy = fs.readFileSync(`./XeonMedia/video/${BhosdikaSz}.mp4`)
+SzBotInc.sendMessage(m.chat, { video: videobuffy }, { quoted: m })
 }
 }
 
 if (m.isGroup && m.mtype == 'viewOnceMessage') {
 let teks = `╭「 *Anti ViewOnce* 」\n├ *Name* : ${pushname}\n├ *User* : @${m.sender.split("@")[0]}\n├ *Clock* : ${time2}\n└ *Message* : ${m.mtype}`
-XeonBotInc.sendMessage(m.chat, { text: teks, mentions: [m.sender] }, { quoted: m })
+SzBotInc.sendMessage(m.chat, { text: teks, mentions: [m.sender] }, { quoted: m })
 await sleep(500)
 m.copyNForward(m.chat, true, {readViewOnce: true}, {quoted: m}).catch(_ => m.reply(`Maybe It's Opened`))
 }
@@ -565,7 +562,7 @@ title: `${m.pushName}`,
 jpegThumbnail: defaultpp } } }
 
 const banRep = () => {
-XeonBotInc.sendMessage(m.chat, {
+SzBotInc.sendMessage(m.chat, {
 text:`Sorry you've been banned, please chat @${creator.split("@")[0]} to unban`,
 mentions: [creator],
 },
@@ -592,8 +589,8 @@ return banRep()
 let list = []
 for (let i of owner) {
 list.push({
-	    	displayName: await XeonBotInc.getName(i),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await XeonBotInc.getName(i)}\nFN:${await XeonBotInc.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${ytname}\nitem2.X-ABLabel:YouTube\nitem3.URL:${socialm}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	displayName: await SzBotInc.getName(i),
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await SzBotInc.getName(i)}\nFN:${await SzBotInc.getName(i)}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Click here to chat\nitem2.EMAIL;type=INTERNET:${ytname}\nitem2.X-ABLabel:YouTube\nitem3.URL:${socialm}\nitem3.X-ABLabel:GitHub\nitem4.ADR:;;${location};;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 
@@ -624,17 +621,17 @@ const repPy = {
 	}
 }
 
-//let xeonrecordin = ['recording','composing']
-//let xeonrecordinfinal = xeonrecordin[Math.floor(Math.random() * xeonrecordin.length)]
+//let kenvrecordin = ['recording','composing']
+//let kenvrecordinfinal = kenvrecordin[Math.floor(Math.random() * kenvrecordin.length)]
 
 if (global.autoTyping) {
 if (command) {
-XeonBotInc.sendPresenceUpdate('composing', from)
+SzBotInc.sendPresenceUpdate('composing', from)
 }
 }
 if (global.autoRecord) {
 if (command) {
-XeonBotInc.sendPresenceUpdate('recording', from)
+SzBotInc.sendPresenceUpdate('recording', from)
 }
 }
 
@@ -647,7 +644,7 @@ let gHz = require("./scrape/savefrom")
 let Lehd = await gHz.savefrom(Link)
 let ghd = await reSize(Lehd.thumb, 300, 300)
 let ghed = await ytdl.getInfo(Link)
-let gdyr = await XeonBotInc.sendMessage(from, {image: { url: Lehd.thumb } , caption: `Channel Name : ${ghed.player_response.videoDetails.author}
+let gdyr = await SzBotInc.sendMessage(from, {image: { url: Lehd.thumb } , caption: `Channel Name : ${ghed.player_response.videoDetails.author}
 Channel Link : https://youtube.com/channel/${ghed.player_response.videoDetails.channelId}
 Title : ${Lehd.meta.title}
 Duration : ${Lehd.meta.duration}
@@ -659,7 +656,7 @@ console.log(color('Download Video With ytdl-core'))
 let nana = ytdl(Link)
 .pipe(fs.createWriteStream(mp4File))
 .on('finish', async () => {
-await XeonBotInc.sendMessage(from, { video: fs.readFileSync(mp4File), caption: mess.succes, gifPlayback: false }, { quoted: gdyr })
+await SzBotInc.sendMessage(from, { video: fs.readFileSync(mp4File), caption: mess.succes, gifPlayback: false }, { quoted: gdyr })
 fs.unlinkSync(`./${mp4File}`)
 })
 } catch (err) {
@@ -672,7 +669,7 @@ let pNx = require("./scrape/savefrom")
 let Puxa = await pNx.savefrom(Link)
 let MlP = await reSize(Puxa.thumb, 300, 300)
 let PlXz = await ytdl.getInfo(Link)
-let gedeyeer = await XeonBotInc.sendMessage(from, { image: { url: Puxa.thumb } , caption: `Channel Name : ${PlXz.player_response.videoDetails.author}
+let gedeyeer = await SzBotInc.sendMessage(from, { image: { url: Puxa.thumb } , caption: `Channel Name : ${PlXz.player_response.videoDetails.author}
 Channel Link : https://youtube.com/channel/${PlXz.player_response.videoDetails.channelId}
 Title : ${Puxa.meta.title}
 Duration : ${Puxa.meta.duration}
@@ -684,7 +681,7 @@ console.log(color('Download Audio With ytdl-core'))
 ytdl(Link, { filter: 'audioonly' })
 .pipe(fs.createWriteStream(mp3File))
 .on('finish', async () => {
-await XeonBotInc.sendMessage(from, { audio: fs.readFileSync(mp3File), mimetype: 'audio/mp4' }, { quoted: gedeyeer })
+await SzBotInc.sendMessage(from, { audio: fs.readFileSync(mp3File), mimetype: 'audio/mp4' }, { quoted: gedeyeer })
 fs.unlinkSync(mp3File)
 })
 } catch (err) {
@@ -693,7 +690,7 @@ m.reply(`${err}`)
 }
 
 async function sendPoll(jid, text, list) {
-XeonBotInc.relayMessage(jid, {
+SzBotInc.relayMessage(jid, {
 "pollCreationMessage": {
 "name": text,
 "options": list.map(v => { return { optionName: v } }),
@@ -971,35 +968,32 @@ async function igstalk(Username) {
   })
 }
 
-async function replyprem(teks) {
-    m.reply(`This feature is for premium user, contact the owner to become premium user`)
-}
 
         // Autosticker gc
         if (isAutoSticker) {
             if (/image/.test(mime) && !/webp/.test(mime)) {
                 let mediac = await quoted.download()
-                await XeonBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+                await SzBotInc.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
                 console.log(`Auto sticker detected`)
             } else if (/video/.test(mime)) {
                 if ((quoted.msg || quoted).seconds > 11) return
                 let mediac = await quoted.download()
-                await XeonBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+                await SzBotInc.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
             }
         }
 
 // Anti Link
         if (Antilinkgc) {
         if (budy.match(`chat.whatsapp.com`)) {
-        if (!isBotAdmins) return XeonStickBotAdmin()
-        let gclink = (`https://chat.whatsapp.com/`+await XeonBotInc.groupInviteCode(m.chat))
+        if (!isBotAdmins) return SzStickBotAdmin()
+        let gclink = (`https://chat.whatsapp.com/`+await SzBotInc.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
-        if (isgclink) return XeonBotInc.sendMessage(m.chat, {text: `\`\`\`「 Group Link Detected 」\`\`\`\n\nYou won't be kicked by a bot because what you send is a link to this group`})
-        if (isAdmins) return XeonBotInc.sendMessage(m.chat, {text: `\`\`\`「 Group Link Detected 」\`\`\`\n\nAdmin has sent a link, admin is free to post any link`})
-        if (XeonTheCreator) return XeonBotInc.sendMessage(m.chat, {text: `\`\`\`「 Group Link Detected 」\`\`\`\n\nOwner has sent a link, owner is free to post any link`})
+        if (isgclink) return SzBotInc.sendMessage(m.chat, {text: `\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆 𝑮𝒓𝒐𝒖𝒑𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑽𝒐𝒊𝒄𝒊 𝒒𝒖𝒆 𝒕𝒂 𝒃𝒆̂𝒕𝒊𝒔𝒆 𝒕𝒆 𝒄𝒐𝒏𝒅𝒖𝒊𝒕 𝒉𝒐𝒓𝒔 𝒅𝒆 𝒄𝒆 𝒈𝒓𝒐𝒖𝒑𝒆`})
+        if (isAdmins) return SzBotInc.sendMessage(m.chat, {text: `\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆 𝑮𝒓𝒐𝒖𝒑𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`})
+        if (KenvTheCreator) return SzBotInc.sendMessage(m.chat, {text: `\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆 𝑮𝒓𝒐𝒖𝒑𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑳𝒆 𝒃𝒐𝒔𝒔 𝒏𝒆 𝒑𝒆𝒖𝒕 𝒑𝒂𝒔 𝒆̂𝒕𝒓𝒆 𝒓𝒆𝒕𝒊𝒓𝒆́ 𝒄'𝒆𝒔𝒕 𝒒𝒖𝒂𝒏𝒅-𝒎𝒆̂𝒎𝒆 𝒍𝒆 𝒃𝒐𝒔𝒔`})
         kice = m.sender
-        await XeonBotInc.sendMessage(m.chat,
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1008,21 +1002,21 @@ async function replyprem(teks) {
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-			XeonBotInc.sendMessage(from, {text:`\`\`\`「 Group Link Detected 」\`\`\`\n\n@${kice.split("@")[0]} Has been kicked because of sending group link in this group`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆 𝑮𝒓𝒐𝒖𝒑𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${kice.split("@")[0]} 𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒅𝒆 𝒈𝒓𝒐𝒖𝒑𝒆 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
             }            
         }
 
- // Antiwame by xeon
+ // Antiwame by kenv
   if (antiWame)
   if (budy.includes(`Wa.me`)) {
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Wa.me Link Detected 」\`\`\`\n\nAdmin has sent a wa.me link, admin is free to send any link😇`
+bvl = `\`\`\`「 Wa.me 𝑳𝒊𝒆𝒏 𝑫𝒆 𝑮𝒓𝒐𝒖𝒑𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
+if (KenvTheCreator) return m.reply(bvl)
 kice = m.sender
-        await XeonBotInc.sendMessage(m.chat,
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1031,19 +1025,19 @@ kice = m.sender
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kice.split("@")[0]} Has been kicked because of sending wa.me link in this group`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 Wa.me 𝑳𝒊𝒆𝒏 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${kice.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 wa.me 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } else {
 }
   if (antiWame)
   if (budy.includes(`http://wa.me`)) {
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Wa.me Link Detected 」\`\`\`\n\nAdmin has sent a wa.me link, admin is free to send any link😇`
+bvl = `\`\`\`「 Wa.me 𝑳𝒊𝒆𝒏 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
+if (kenvTheCreator) return m.reply(bvl)
 kice = m.sender
-        await XeonBotInc.sendMessage(m.chat,
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1052,15 +1046,15 @@ kice = m.sender
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kice.split("@")[0]} Has been kicked because of sending wa.me link in this group`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 Wa.me 𝑳𝒊𝒆𝒏 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${kice.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 wa.me 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } else {
 }
-//antivirtex by xeon
+//antivirtex by kenv
   if (antiVirtex) {
   if (budy.length > 3500) {
-  if (!isBotAdmins) return XeonStickBotAdmin()
-          await XeonBotInc.sendMessage(m.chat,
+  if (!isBotAdmins) return SzStickBotAdmin()
+          await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1069,19 +1063,19 @@ XeonBotInc.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-			XeonBotInc.sendMessage(from, {text:`\`\`\`「 Virus Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending virus in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+			SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑽𝒊𝒓𝒖𝒔 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒗𝒊𝒓𝒖𝒔 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
   }
   }
-//anti bad words by xeon
+//anti bad words by kenv
 if (antiToxic)
-if (BadXeon.includes(messagesD)) {
+if (Badkenv.includes(messagesD)) {
 if (m.text) {
-bvl = `\`\`\`「 Bad Word Detected 」\`\`\`\n\nYou are using bad word but you are an admin/owner that's why i won't kick you😇`
+bvl = `\`\`\`「 𝑴𝒐𝒕 𝒔𝒖𝒔𝒑𝒆𝒄𝒕 𝒅𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1090,18 +1084,18 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			await XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Bad Word Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} was kicked because of using bad words in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})}
+			await SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑴𝒐𝒕 𝒔𝒖𝒔𝒑𝒆𝒄𝒕 𝒅𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆́𝒄𝒓𝒊𝒓𝒆 𝒅𝒆𝒔 𝒂̂𝒏𝒆𝒓𝒊𝒆𝒔 𝒅𝒂𝒏𝒔 𝒄𝒆 𝒈𝒓𝒐𝒖𝒑𝒆`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})}
 }
-//antilink youtube video by xeon
+//antilink youtube video by kenv
 if (AntiLinkYoutubeVid)
 if (budy.includes("https://youtu.be/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 YoutTube Video Link Detected 」\`\`\`\n\nAdmin has sent a youtube video link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1110,19 +1104,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 YouTube Video Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending youtube video link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink youtube channel by xeon
+//antilink youtube channel by kenv
 if (AntiLinkYoutubeChannel)
    if (budy.includes("https://youtube.com/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 YoutTube Channel Link Detected 」\`\`\`\n\nAdmin has sent a youtube channel link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1131,19 +1125,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 YouTube Channel Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending youtube channel link in this group`, contextInfo:{mentionedJid:[m.sendet]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝑳𝒊𝒆𝒏 𝒀𝒐𝒖𝑻𝒖𝒃𝒆 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sendet]}}, {quoted:m})
 } else {
 }
-//antilink instagram by xeon
+//antilink instagram by kenv
 if (AntiLinkInstagram)
    if (budy.includes("https://www.instagram.com/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Instagram Link Detected 」\`\`\`\n\nAdmin has sent a instagram link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑰𝑮 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1152,19 +1146,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Instagram Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending instagram link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑰𝑮 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝑰𝑮 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink facebook by xeon
+//antilink facebook by kenv
 if (AntiLinkFacebook)
    if (budy.includes("https://facebook.com/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Facebook Link Detected 」\`\`\`\n\nAdmin has sent a facebook link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑭𝑩 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1173,20 +1167,20 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Facebook Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending facebook link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+XeonBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑭𝑩 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝑭𝑩 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink telegram by xeon
+//antilink telegram by kenv
 if (AntiLinkTelegram)
    if (budy.includes("https://t.me/")){
 if (AntiLinkTelegram)
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Telegram Link Detected 」\`\`\`\n\nAdmin has sent a telegram link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒆𝒍𝒆𝒈𝒓𝒂𝒎 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1195,19 +1189,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Telegram Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending telegram link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒆𝒍𝒆𝒈𝒓𝒂𝒎 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒕𝒆𝒍𝒆𝒈𝒓𝒂𝒎 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink tiktok by xeon
+//antilink tiktok by kenv
 if (AntiLinkTiktok)
    if (budy.includes("https://www.tiktok.com/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Tiktok Link Detected 」\`\`\`\n\nAdmin has sent a tiktok link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒊𝒌𝒕𝒐𝒌 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1216,19 +1210,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Tiktok Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending tiktok link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒊𝒌𝒕𝒐𝒌 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒕𝒊𝒌𝒕𝒐𝒌 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink twitter by xeon
+//antilink twitter by kenv
 if (AntiLinkTwitter)
    if (budy.includes("https://twitter.com/")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Twitter Link Detected 」\`\`\`\n\nAdmin has sent a twitter link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒘𝒊𝒕𝒕𝒆𝒓 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1237,19 +1231,19 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Tiktok Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending twitter link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+XeonBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒊𝒌𝒕𝒐𝒌 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒕𝒊𝒌𝒕𝒐𝒌 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
-//antilink all by xeon
+//antilink all by kenv
 if (AntiLinkAll)
    if (budy.includes("https://")){
 if (!isBotAdmins) return
-bvl = `\`\`\`「 Link Detected 」\`\`\`\n\nAdmin has sent a link, admin is free to send any link😇`
+bvl = `\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n𝑨 𝒐𝒖𝒂𝒊𝒔 𝒕𝒖 𝒆𝒔 𝒂𝒅𝒎𝒊𝒏. 𝒄'𝒆𝒔𝒕 𝒄𝒂𝒓𝒓𝒆́😌`
 if (isAdmins) return m.reply(bvl)
 if (m.key.fromMe) return m.reply(bvl)
-if (XeonTheCreator) return m.reply(bvl)
-        await XeonBotInc.sendMessage(m.chat,
+if (KenvTheCreator) return m.reply(bvl)
+        await SzBotInc.sendMessage(m.chat,
 			    {
 			        delete: {
 			            remoteJid: m.chat,
@@ -1258,8 +1252,8 @@ if (XeonTheCreator) return m.reply(bvl)
 			            participant: m.key.participant
 			        }
 			    })
-			XeonBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 Link Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending link in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 
@@ -1451,9 +1445,9 @@ case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
             let latensie = speed() - timestampe
             xeonezy = `┌─❖
 │ Hi 👋 
-└┬❖  ${pushname} 
-┌┤✑  ${xeonytimewisher} 😄
-│└────────────┈ ⳹
+└┬${pushname} 
+┌┤  ${xeonytimewisher} 😄
+│└───────────┈ ⳹
 │
 └─ 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊        
 │𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
