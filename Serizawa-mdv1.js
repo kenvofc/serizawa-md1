@@ -1443,56 +1443,55 @@ case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
             let me = m.sender
             let timestampe = speed()
             let latensie = speed() - timestampe
-            xeonezy = `┌─❖
-│ Hi 👋 
-└┬${pushname} 
-┌┤  ${xeonytimewisher} 😄
-│└───────────┈ ⳹
-│
-└─ 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊        
-│𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-│𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│𝗕𝗼𝘁 : ${global.botname}
-│𝗢𝘄𝗻𝗲𝗿 𝗡𝗼: ${ownernumber}
-│𝗣𝗿𝗲𝗳𝗶𝘅 :  NO-PREFIX 
-│𝗠𝗼𝗱𝗲 : ${XeonBotInc.public ? 'Public' : `Self`}
-│𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-│𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│
-└─ 𝙐𝙎𝙀𝙍 𝙄𝙉𝙁𝙊 
-│𝗡𝗮𝗺𝗲 : ${pushname}
-│𝗡𝘂𝗺𝗯𝗲𝗿 : @${me.split('@')[0]}
-│𝗣𝗿𝗲𝗺𝗶𝘂𝗺 : ${isPrem ? '✅' : `❌`}
-│
-└─ 𝙏𝙄𝙈𝙀 𝙄𝙉𝙁𝙊 
-│𝗧𝗶??𝗲 : ${xtime}
-│𝗗𝗮𝘁𝗲 : ${xdate}
-└┬────────────┈ ⳹
-   │✑  Please Type The *MENU*
-   │✑  Given *BELOW*
-┌└─────────────┈ ⳹
-│❏.allmenu
-│❏.downloadmenu
-│❏.funmenu
-│❏.aimenu
-│❏.groupmenu
-│❏.ownermenu
-│❏.photooxymenu
-│❏.textpromenu
-│❏.ephoto360menu
-│❏.animemenu
-│❏.nsfwmenu
-│❏.randomphotomenu
-│❏.randomvideomenu
-│❏.stickermenu
-│❏.databasemenu
-│❏.stalkermenu
-│❏.bugmenu
-│❏.othermenu
-└─────────────────┈ ⳹`
+            szezy = `↟➳✭
+↟➳𝒀𝒐 👋 
+↟➳✭${pushname} 
+↟↠✭ ${sztimewisher} 😄
+↟➳➳➳➳➳➳➳➳➳➳➳➳➳┈ ⳹
+↟
+↟➳ 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊        
+↟𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
+↟𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
+↟𝗕𝗼𝘁 : ${global.botname}
+↟𝗢𝘄𝗻𝗲𝗿 𝗡𝗼: ${ownernumber}
+↟𝗣𝗿𝗲𝗳𝗶𝘅 :  NO-PREFIX 
+↟𝗠𝗼𝗱𝗲 : ${SzBotInc.public ? 'Public' : `Self`}
+↟𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
+↟𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
+↟
+↟➳ 𝙐𝙎𝙀𝙍 𝙄𝙉𝙁𝙊 
+↟𝗡𝗮𝗺𝗲 : ${pushname}
+↟𝗡𝘂𝗺𝗯𝗲𝗿 : @${me.split('@')[0]}
+↟
+↟➳ 𝙏𝙄𝙈𝙀 𝙄𝙉𝙁𝙊 
+↟𝗧𝗶??𝗲 : ${xtime}
+↟𝗗𝗮𝘁𝗲 : ${xdate}
+↟➳↡➳➳➳➳➳➳➳➳➳➳➳➳┈ ⳹
+  ↡↡➳  Please Type The *MENU*
+  ↡↡➳  Given *BELOW*
+↡➳➳➳➳➳➳➳➳➳➳➳➳➳┈ ⳹
+↡❏.allmenu
+↡❏.downloadmenu
+↡❏.funmenu
+↡❏.aimenu
+↡❏.groupmenu
+↡❏.ownermenu
+↡❏.photooxymenu
+↡❏.textpromenu
+↡❏.ephoto360menu
+↡❏.animemenu
+↡❏.nsfwmenu
+↡❏.randomphotomenu
+↡❏.randomvideomenu
+↡❏.stickermenu
+↡❏.databasemenu
+↡❏.stalkermenu
+↡❏.bugmenu
+↡❏.othermenu
+↡➳➳➳➳➳➳➳➳➳➳➳➳➳┈ ⳹`
             let ments = [ownernya, me, mark]        
-           XeonBotInc.sendMessage(from, { 
-text: xeonezy,
+           SzBotInc.sendMessage(from, { 
+text: szezy,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: true, 
@@ -1503,7 +1502,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1513,8 +1512,8 @@ mentionedJid:[sender],
            break
 case 'allmenu': {
 var unicorn = await getBuffer(picak+'All Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${allmenu(prefix, hituet)}`,
+seSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${allmenu(prefix, hituet)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1524,7 +1523,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1534,8 +1533,8 @@ mentionedJid:[sender],
 break
 case 'ownermenu': {
 var unicorn = await getBuffer(picak+'Owner Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${ownermenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${ownermenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1545,7 +1544,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1555,8 +1554,8 @@ mentionedJid:[sender],
 break
 case 'othermenu': {
 	var unicorn = await getBuffer(picak+'Other Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${othermenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${othermenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1566,7 +1565,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawa.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1576,8 +1575,8 @@ mentionedJid:[sender],
 break
 case 'downloadmenu': {
 var unicorn = await getBuffer(picak+'Download Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${downloadmenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${downloadmenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1587,7 +1586,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1597,8 +1596,8 @@ mentionedJid:[sender],
 break
 case 'groupmenu': {
 var unicorn = await getBuffer(picak+'Group Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${groupmenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${groupmenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1608,7 +1607,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1618,8 +1617,8 @@ mentionedJid:[sender],
 break
 case 'funmenu': {
 var unicorn = await getBuffer(picak+'Fun Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${funmenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${funmenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1629,7 +1628,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1639,8 +1638,8 @@ mentionedJid:[sender],
 break
 case 'stalkermenu': {
 var unicorn = await getBuffer(picak+'Stalker Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${stalkermenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${stalkermenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1650,7 +1649,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1660,8 +1659,8 @@ mentionedJid:[sender],
 break
 case 'randomphotomenu': {
 var unicorn = await getBuffer(picak+'Random Pic Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${randphotomenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${randphotomenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1671,7 +1670,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1681,8 +1680,8 @@ mentionedJid:[sender],
 break
 case 'randomvideomenu': {
 var unicorn = await getBuffer(picak+'Random Vid Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${randvideomenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${randvideomenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1692,7 +1691,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1702,8 +1701,8 @@ mentionedJid:[sender],
 break
 case 'textpromenu': {
 var unicorn = await getBuffer(picak+'Textpro Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${textpromenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${textpromenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1713,7 +1712,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1723,8 +1722,8 @@ mentionedJid:[sender],
 break
 case 'photooxymenu': {
 var unicorn = await getBuffer(picak+'Photooxy Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${photooxymenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${photooxymenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1734,7 +1733,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1744,8 +1743,8 @@ mentionedJid:[sender],
 break
 case 'ephoto360menu': {
 var unicorn = await getBuffer(picak+'Photo360 Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${ephoto360menu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${ephoto360menu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1755,7 +1754,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1765,8 +1764,8 @@ mentionedJid:[sender],
 break
 case 'nsfwmenu': {
 var unicorn = await getBuffer(picak+'Anime NSFW Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${nsfwmenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${nsfwmenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1776,7 +1775,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1786,8 +1785,8 @@ mentionedJid:[sender],
 break
 case 'animemenu': {
 var unicorn = await getBuffer(picak+'Anime Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${animemenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${animemenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1797,7 +1796,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1807,8 +1806,8 @@ mentionedJid:[sender],
 break
 case 'stickermenu': {
 var unicorn = await getBuffer(picak+'Sticker Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${stickermenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${stickermenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1818,7 +1817,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1828,8 +1827,8 @@ mentionedJid:[sender],
 break
 case 'databasemenu': {
 var unicorn = await getBuffer(picak+'Database Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${databasemenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${databasemenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1839,7 +1838,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1849,8 +1848,8 @@ mentionedJid:[sender],
 break
 case 'aimenu': {
 var unicorn = await getBuffer(picak+'OpenAI Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${aimenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${aimenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1860,7 +1859,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -1870,8 +1869,8 @@ mentionedJid:[sender],
 break
 case 'bugmenu': {
 var unicorn = await getBuffer(picak+'Bug Menu')
-sendXeonBotIncMessage(from, { 
-text: `Hi @${sender.split("@")[0]}\n\n${bugmenu(prefix)}`,
+sendSzBotIncMessage(from, { 
+text: `𝒀𝒐 @${sender.split("@")[0]}\n\n${bugmenu(prefix)}`,
 mentions:[sender],
 contextInfo:{
 mentionedJid:[sender],
@@ -1881,7 +1880,7 @@ mentionedJid:[sender],
 "title": botname, 
 "containsAutoReply": true,
 "mediaType": 1, 
-"thumbnail": fs.readFileSync("./XeonMedia/theme/cheemspic.jpg"),
+"thumbnail": fs.readFileSync("./XeonMedia/theme/serizawapic.jpg"),
 "mediaUrl": `${wagc}`,
 "sourceUrl": `${wagc}`
 }
@@ -2050,28 +2049,27 @@ case 'sound158':
 case 'sound159':
 case 'sound160':
 case 'sound161':
-XeonBotInc_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
-await XeonBotInc.sendMessage(m.chat, { audio: XeonBotInc_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
+SzBotInc_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
+await SzBotInc.sendMessage(m.chat, { audio: SzBotInc_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 break
 case 'friend':
 case 'searchfriend':{
 
-let teman = pickRandom(xeonverifieduser)
-setTimeout(() => {
-XeonStickWait()
+let teman = pickRandom(kenvverifieduser)
+setTimeout(() => 
 }, 1000)
 setTimeout(() => {
-replygcxeon('Managed to Get One Person')
+replygcsz('Managed to Get One Person')
 }, 5000)
 setTimeout(() => {
-XeonBotInc.sendMessage(from, {text: `Here @${teman.split("@")[0]}`, mentions: [teman]}, { quoted : m })
+SzBotInc.sendMessage(from, {text: `Here @${teman.split("@")[0]}`, mentions: [teman]}, { quoted : m })
 }, 9000)
 }
 break
 case 'sc': case 'script': case 'donate': case 'donate': case 'cekupdate': case 'updatebot': case 'cekbot': case 'sourcecode': {
 me = m.sender
 teks = `*「  ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nHi @${me.split('@')[0]} 👋\nDont forget to donate yeah🍜 👇 https://i.ibb.co/w46VQ8D/Picsart-22-10-08-06-46-30-674.jpg`
-sendXeonBotIncMessage(from, { 
+sendSzBotIncMessage(from, { 
 text: teks,
 mentions:[sender],
 contextInfo:{
@@ -2093,23 +2091,23 @@ mentionedJid:[sender],
 }
 break
 case 'request': case 'reportbug': {
-	if (!text) return replygcxeon(`Example : ${
+	if (!text) return replygcsz(`Example : ${
         prefix + command
-      } hi dev play command is not working`)
+      } 𝒀𝒐 𝒄𝒆𝒕𝒕𝒆 𝒄𝒐𝒎𝒎𝒂𝒏𝒅𝒆 𝒏𝒆 𝒇𝒐𝒏𝒄𝒕𝒊𝒐𝒏𝒆 𝒑𝒂𝒔`)
             textt = `*| REQUEST/BUG |*`
             teks1 = `\n\n*User* : @${
    m.sender.split("@")[0]
   }\n*Request/Bug* : ${text}`
-            teks2 = `\n\n*Hii ${pushname},You request has been forwarded to my Owners*.\n*Please wait...*`
+            teks2 = `\n\n*Hii ${pushname}, 𝑻𝒂 𝒓𝒆𝒒𝒖𝒆̂𝒕𝒆 𝒂 𝒆́𝒕𝒆́ 𝒇𝒐𝒓𝒎𝒖𝒍𝒆́𝒆 𝒂𝒖 𝒑𝒓𝒐𝒑𝒓𝒊𝒐*.\n*Please wait...*`
             for (let i of owner) {
-                XeonBotInc.sendMessage(i + "@s.whatsapp.net", {
+                SzBotInc.sendMessage(i + "@s.whatsapp.net", {
                     text: textt + teks1,
                     mentions: [m.sender],
                 }, {
                     quoted: m,
                 })
             }
-            XeonBotInc.sendMessage(m.chat, {
+            SzBotInc.sendMessage(m.chat, {
                 text: textt + teks2 + teks1,
                 mentions: [m.sender],
             }, {
@@ -2119,18 +2117,18 @@ case 'request': case 'reportbug': {
         }
         break
 case 'q': case 'quoted': {
-if (!m.quoted) return replygcxeon('Reply the Message!!')
-let xeonquotx= await XeonBotInc.serializeM(await m.getQuotedObj())
-if (!xeonquotx.quoted) return replygcxeon('The message you are replying to is not sent by the bot')
-await xeonquotx.quoted.copyNForward(m.chat, true)
+if (!m.quoted) return replygcsz('Reply the Message!!')
+let szquotx= await SzBotInc.serializeM(await m.getQuotedObj())
+if (!szquotx.quoted) return replygcsz('The message you are replying to is not sent by the bot')
+await szquotx.quoted.copyNForward(m.chat, true)
 }
 break
 case 'igstalk2':{
 
-if (!q) return replygcxeon(`Example ${prefix+command} unicorn_xeon`)
-XeonStickWait()
+if (!q) return replygcsz(`Example ${prefix+command} unicorn_kenv`)
+xeonStickWait()
 const aj = await igstalk(`${q}`)
-XeonBotInc.sendMessage(m.chat, { image: { url : aj.profile }, caption: 
+SzBotInc.sendMessage(m.chat, { image: { url : aj.profile }, caption: 
 `*/ Instagram Stalker \\*
 
 Full name : ${aj.fullname}
@@ -2143,10 +2141,10 @@ Bio : ${aj.bio}` }, { quoted: m } )
 break
 case 'ffstalk':{
 
-if (!q) return replygcxeon(`Example ${prefix+command} 946716486`)
+if (!q) return replygcsz(`Example ${prefix+command} 946716486`)
 XeonStickWait()
 eeh = await ffstalk.ffstalk(`${q}`)
-replygcxeon(`*/ Free Fire Stalker \\*
+replygcsz(`*/ Free Fire Stalker \\*
 
 Id : ${eeh.id}
 Nickname : ${eeh.nickname}`)
@@ -2154,10 +2152,10 @@ Nickname : ${eeh.nickname}`)
 break
 case 'mlstalk': {
 
-if (!q) return replygcxeon(`Example ${prefix+command} 530793138|8129`)
+if (!q) return replygcsz(`Example ${prefix+command} 530793138|8129`)
 XeonStickWait()
 let dat = await mlstalk.mlstalk(q.split("|")[0], q.split("|")[1])
-replygcxeon(`*/ Mobile Legend Stalker \\*
+replygcsz(`*/ Mobile Legend Stalker \\*
 
 Username : ${dat.userName}
 Id : ${q.split("|")[0]}
@@ -2165,10 +2163,10 @@ ID Zone: ${q.split("|")[1]}`)
 }
 break
 case 'npmstalk':{
-if (!q) return replygcxeon(`Example ${prefix+command} xeonapi`)
+if (!q) return replygcsz(`Example ${prefix+command} kenvapi`)
 XeonStickWait()
 eha = await npmstalk.npmstalk(q)
-replygcxeon(`*/ Npm Stalker \\*
+replygcsz(`*/ Npm Stalker \\*
 
 Name : ${eha.name}
 Version Latest : ${eha.versionLatest}
@@ -2181,10 +2179,10 @@ Latest Publish Time : ${eha.latestPublishTime}`)
 }
 break
 case 'ghstalk': case 'githubstalk':{
-if (!q) return replygcxeon(`Example ${prefix+command} DGXeon`)
+if (!q) return replygcsz(`Example ${prefix+command} kenvofc`)
 XeonStickWait()
 aj = await githubstalk.githubstalk(`${q}`)
-XeonBotInc.sendMessage(m.chat, { image: { url : aj.profile_pic }, caption: 
+SzBotInc.sendMessage(m.chat, { image: { url : aj.profile_pic }, caption: 
 `*/ Github Stalker \\*
 
 Username : ${aj.username}
@@ -2209,33 +2207,33 @@ Updated At : ${aj.updated_at}` }, { quoted: m } )
 }
 break
 case 'ss': case 'ssweb': {
-if (!q) return replygcxeon(`Example ${prefix+command} link`)
+if (!q) return replygcsz(`Example ${prefix+command} link`)
 XeonStickWait()
 let krt = await scp1.ssweb(q)
-XeonBotInc.sendMessage(from,{image:krt.result,caption:mess.succes}, {quoted:m})
+SzBotInc.sendMessage(from,{image:krt.result,caption:mess.succes}, {quoted:m})
 }
 break
 case 'join': {
-if (!XeonTheCreator) return XeonStickOwner()
-if (!text) return replygcxeon(`Contoh ${prefix+command} linkgc`)
-if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return replygcxeon('Link Invalid!')
+if (!KenvTheCreator) return XeonStickOwner()
+if (!text) return replygcsz(`Contoh ${prefix+command} linkgc`)
+if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) return replygcsz('Link Invalid!')
 let result = args[0].split('https://chat.whatsapp.com/')[1]
-await XeonBotInc.groupAcceptInvite(result)
-await replygcxeon(`Done`)
+await SzBotInc.groupAcceptInvite(result)
+await replygcsz(`Done`)
 }
 break
 case 'poll': {
-	if (!XeonTheCreator) return XeonStickOwner()
+	if (!KenvTheCreator) return XeonStickOwner()
             let [poll, opt] = text.split("|")
             if (text.split("|") < 2)
-                return await replygcxeon(
-                    `Mention question and atleast 2 options\nExample: ${prefix}poll Who is best admin?|Xeon,Cheems,Doge...`
+                return await replygcsz(
+                    `Mention question and atleast 2 options\nExample: ${prefix}poll Who is best admin?|Kenv,Serizawa,Lion...`
                 )
             let options = []
             for (let i of opt.split(',')) {
                 options.push(i)
             }
-            await XeonBotInc.sendMessage(m.chat, {
+            await SzBotInc.sendMessage(m.chat, {
                 poll: {
                     name: poll,
                     values: options
@@ -2245,9 +2243,9 @@ case 'poll': {
         break
         case 'vote': {
             if (!m.isGroup) return XeonStickGroup()
-            if (m.chat in vote) return replygcxeon(`_There are still votes in this chat!_\n\n*${prefix}deletevote* - to delete votes`)
-            if (!text) return replygcxeon(`Enter Reason for Vote, Example: *${prefix + command} Handsome Owner*`)
-            replygcxeon(`Voting starts!\n\n*${prefix}upvote* - for upvote\n*${prefix}downvote* - for downvote\n*${prefix}checkvote* - to check the vote\n*${prefix}deletevote* - to delete vote`)
+            if (m.chat in vote) return replygcsz(`_There are still votes in this chat!_\n\n*${prefix}deletevote* - to delete votes`)
+            if (!text) return replygcsz(`Enter Reason for Vote, Example: *${prefix + command} Handsome Owner*`)
+            replygcsz(`Voting starts!\n\n*${prefix}upvote* - for upvote\n*${prefix}downvote* - for downvote\n*${prefix}checkvote* - to check the vote\n*${prefix}deletevote* - to delete vote`)
             vote[m.chat] = [q, [], []]
             await sleep(1000)
             upvote = vote[m.chat][1]
@@ -2256,52 +2254,52 @@ case 'poll': {
 
 *Reason:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
-│
-│ 
-└────
+↡➳「 UPVOTE 」
+↡ 
+↡➳Total: ${vote[m.chat][1].length}
+↡
+↡ 
+↡➳➳➳➳➳➳➳➳
 
-┌〔 DOWNVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
-│
-│ 
-└────
+↡➳「 DOWNVOTE 」
+↡ 
+↡➳ Total: ${vote[m.chat][2].length}
+↡
+↡ 
+↡➳➳➳➳➳➳➳➳
 
 Please Type Below
 *${prefix}upvote* - to cast vote
 *${prefix}downvote* -  to downvote
 *${prefix}deletevote* - to delete vote`
-            XeonBotInc.sendMessage(m.chat, {text: teks_vote}, {quoted:m})
+            SzBotInc.sendMessage(m.chat, {text: teks_vote}, {quoted:m})
 	    }
             break
                case 'upvote': {
             if (!m.isGroup) return XeonStickGroup()
-            if (!(m.chat in vote)) return replygcxeon(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
+            if (!(m.chat in vote)) return replygcsz(`_*no voting in this group!*_\n\n*${prefix}vote* - to start voting`)
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
-            if (wasVote) return replygcxeon('You have Voted')
+            if (wasVote) return replygcsz('You have Voted')
             vote[m.chat][1].push(m.sender)
             menvote = vote[m.chat][1].concat(vote[m.chat][2])
             teks_vote = `* VOTE *
 
 *Reason:* ${vote[m.chat][0]}
 
-┌〔 UPVOTE 〕
-│ 
-├ Total: ${vote[m.chat][1].length}
+↡➳「 UPVOTE 」
+↡ 
+↡➳ Total: ${vote[m.chat][1].length}
 ${vote[m.chat][1].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳
 
-┌〔 DOWNVOTE 〕
-│ 
-├ Total: ${vote[m.chat][2].length}
+↡➳「 DOWNVOTE 」
+↡ 
+↡➳ Total: ${vote[m.chat][2].length}
 ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
-│ 
-└────
+↡ 
+↡➳➳➳➳➳➳➳➳
 
 Please Type Below
 *${prefix}upvote* - to upvote
