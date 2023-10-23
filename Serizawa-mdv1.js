@@ -1168,7 +1168,7 @@ if (KenvTheCreator) return m.reply(bvl)
 			        }
 			    })
 			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑭𝑩 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝑭𝑩 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑭𝑩 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝑭𝑩 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 //antilink telegram by kenv
@@ -1232,7 +1232,7 @@ if (KenvTheCreator) return m.reply(bvl)
 			        }
 			    })
 			SzBotInc.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-XeonBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒊𝒌𝒕𝒐𝒌 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒕𝒊𝒌𝒕𝒐𝒌 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
+SzBotInc.sendMessage(from, {text:`\`\`\`「 𝑳𝒊𝒆𝒏 𝑻𝒊𝒌𝒕𝒐𝒌 𝑫𝒆́𝒕𝒆𝒄𝒕𝒆́ 」\`\`\`\n\n@${m.sender.split("@")[0]}  𝑨 𝒆́𝒕𝒆́ 𝒐𝒇𝒇 𝒑𝒂𝒓𝒄𝒆 𝒒𝒖'𝒊𝒍 𝒂 𝒆𝒖 𝒍𝒂 𝒇𝒂𝒄𝒉𝒆𝒖𝒔𝒆 𝒕𝒆𝒏𝒅𝒂𝒏𝒄𝒆 𝒔𝒖𝒊𝒄𝒊𝒅𝒂𝒊𝒓𝒆 𝒅'𝒆𝒏𝒗𝒐𝒚𝒆𝒓 𝒖𝒏 𝒍𝒊𝒆𝒏 𝒕𝒊𝒌𝒕𝒐𝒌 𝒊𝒄𝒊`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
 } else {
 }
 //antilink all by kenv
@@ -1273,7 +1273,7 @@ const { EmojiAPI } = require("emoji-api")
 const emoji = new EmojiAPI()
 emoji.get(satu)
 .then(emoji => {
-XeonBotInc.sendMessage(from, { caption: mess.success, image: {url: emoji.images[dua].url} }, {quoted:m})
+SzBotInc.sendMessage(from, { caption: mess.success, image: {url: emoji.images[dua].url} }, {quoted:m})
 })
 } catch (e) {
 m.reply("Emoji error, please enter another emoji\nNOTE : Just enter 1 emoji")
@@ -1285,10 +1285,10 @@ if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in globa
 let hash = global.db.sticker[m.msg.fileSha256.toString('base64')]
 let { text, mentionedJid } = hash
 let messages = await generateWAMessage(m.chat, { text: text, mentions: mentionedJid }, {
-    userJid: XeonBotInc.user.id,
+    userJid: SzBotInc.user.id,
     quoted: m.quoted && m.quoted.fakeObj
 })
-messages.key.fromMe = areJidsSameUser(m.sender, XeonBotInc.user.id)
+messages.key.fromMe = areJidsSameUser(m.sender, SzBotInc.user.id)
 messages.key.id = m.key.id
 messages.pushName = m.pushName
 if (m.isGroup) messages.participant = m.sender
@@ -1297,14 +1297,14 @@ let msg = {
     messages: [proto.WebMessageInfo.fromObject(messages)],
     type: 'append'
 }
-XeonBotInc.ev.emit('messages.upsert', msg)
+SzBotInc.ev.emit('messages.upsert', msg)
 }
 
 switch (command) {
 case 'ttc': case 'ttt': case 'tictactoe': {
             let TicTacToe = require("./lib/tictactoe")
             this.game = this.game ? this.game : {}
-            if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return replygcxeon(`You Are Still In The Game`)
+            if (Object.values(this.game).find(room13 => room13.id.startsWith('tictactoe') && [room13.game.playerX, room13.game.playerO].includes(m.sender))) return replygcsz(`You Are Still In The Game`)
             let room13 = Object.values(this.game).find(room13 => room13.state === 'WAITING' && (text ? room13.name === text : true))
             if (room13) {
             room13.o = m.chat
@@ -1334,8 +1334,8 @@ ${arr.slice(6).join('')}
 Waiting @${room13.game.currentTurn.split('@')[0]}
 
 Type *surrender* to surrender and admit defeat`
-            if (room13.x !== room13.o) await XeonBotInc.sendText(room13.x, str, m, { mentions: parseMention(str) } )
-            await XeonBotInc.sendText(room13.o, str, m, { mentions: parseMention(str) } )
+            if (room13.x !== room13.o) await SzBotInc.sendText(room13.x, str, m, { mentions: parseMention(str) } )
+            await SzBotInc.sendText(room13.o, str, m, { mentions: parseMention(str) } )
             } else {
             room13 = {
             id: 'tictactoe-' + (+new Date),
@@ -1345,7 +1345,7 @@ Type *surrender* to surrender and admit defeat`
             state: 'WAITING'
             }
             if (text) room13.name = text
-            replygcxeon('Waiting For Partner' + (text ? ` Type The Command Below ${prefix}${command} ${text}` : ''))
+            replygcsz('Waiting For Partner' + (text ? ` Type The Command Below ${prefix}${command} ${text}` : ''))
             this.game[room13.id] = room13
             }
             }
@@ -1355,12 +1355,12 @@ Type *surrender* to surrender and admit defeat`
             try {
             if (this.game) {
             delete this.game
-            XeonBotInc.sendText(m.chat, `Successfully deleted TicTacToe session`, m)
+            SzBotInc.sendText(m.chat, `Successfully deleted TicTacToe session`, m)
             } else if (!this.game) {
-            replygcxeon(`Session TicTacToe🎮 does not exist`)
+            replygcsz(`Session TicTacToe🎮 does not exist`)
             } else throw '?'
             } catch (e) {
-            replygcxeon('damaged')
+            replygcsz('damaged')
             }
             }
             break
@@ -1370,8 +1370,8 @@ Type *surrender* to surrender and admit defeat`
             let poin_lose = 10
             let timeout = 60000
             if (Object.values(this.suit).find(roof => roof.id.startsWith('suit') && [roof.p, roof.p2].includes(m.sender))) replygcxeon(`Complete your previous game`)
-	    if (m.mentionedJid[0] === m.sender) return replygcxeon(`Can't play with myself !`)
-            if (!m.mentionedJid[0]) return replygcxeon(`_Who do you want to challenge?_\nTag the person..\n\nExample : ${prefix}suit @${owner}`, m.chat, { mentions: [owner[1] + '@s.whatsapp.net'] })
+	    if (m.mentionedJid[0] === m.sender) return replygcsz(`𝑱𝒆 𝒏𝒆 𝒑𝒆𝒖𝒙 𝒑𝒂𝒔 𝒋𝒐𝒖𝒆𝒓 𝒂𝒗𝒆𝒄 𝒎𝒐𝒊 𝒎𝒆̂𝒎𝒆 !`)
+            if (!m.mentionedJid[0]) return replygcsz(`_𝑨𝒗𝒆𝒄 𝒒𝒖𝒊 𝒗𝒆𝒖𝒙-𝒕𝒖 𝒕𝒆 𝒎𝒆𝒔𝒖𝒓𝒆𝒓?_\n𝑻𝒂𝒈 𝒍𝒂 𝒑𝒆𝒓𝒔𝒐𝒏𝒏𝒆..\n\n𝑷𝒂𝒓 𝒆𝒙𝒆𝒎𝒑𝒍𝒆 : ${prefix}suit @${owner}`, m.chat, { mentions: [owner[1] + '@s.whatsapp.net'] })
             if (Object.values(this.suit).find(roof => roof.id.startsWith('suit') && [roof.p, roof.p2].includes(m.mentionedJid[0]))) return replygcxeon(`The person you are challenging is playing suit with someone else :(`)
             let id = 'suit_' + new Date() * 1
             let caption = `_*SUIT PvP*_
@@ -1380,62 +1380,62 @@ Type *surrender* to surrender and admit defeat`
 
 *Hi* @${m.mentionedJid[0].split`@`[0]} *Please type accept to accept or type reject to reject`
             this.suit[id] = {
-            chat: await XeonBotInc.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
+            chat: await SzBotInc.sendText(m.chat, caption, m, { mentions: parseMention(caption) }),
             id: id,
             p: m.sender,
             p2: m.mentionedJid[0],
             status: 'wait',
             waktu: setTimeout(() => {
-            if (this.suit[id]) XeonBotInc.sendText(m.chat, `_Suit time out_`, m)
+            if (this.suit[id]) SzBotInc.sendText(m.chat, `_Suit time out_`, m)
             delete this.suit[id]
             }, 60000), poin, poin_lose, timeout
             }
             }
             break
 	case 'public': {
-                if (!XeonTheCreator) return XeonStickOwner()
-                XeonBotInc.public = true
-                replygcxeon('*Successful in Changing To Public Usage*')
+                if (!KenvTheCreator) return XeonStickOwner()
+                SzBotInc.public = true
+                replygcsz('*𝑼𝒔𝒂𝒈𝒆 𝒑𝒖𝒃𝒍𝒊𝒄 𝒂𝒄𝒕𝒊𝒗𝒊𝒕𝒆́ 𝒂𝒗𝒆𝒄 𝒔𝒖𝒄𝒄𝒆̀𝒔*')
             }
             break
             case 'self': {
-                if (!XeonTheCreator) return XeonStickOwner()
-                XeonBotInc.public = false
-                replygcxeon('*Successful in Changing To Self Usage*')
+                if (!KenvTheCreator) return XeonStickOwner()
+                SzBotInc.public = false
+                replygcsz('*𝑼𝒔𝒂𝒈𝒆 𝒑𝒓𝒊𝒗𝒆́ 𝒂𝒄𝒕𝒊𝒗𝒊𝒕𝒆́ 𝒂𝒗𝒆𝒄 𝒔𝒖𝒄𝒄𝒆̀𝒔*')
             }
             break
 case 'rentbot': {
 if (m.isGroup) return XeonStickPrivate()
 
-rentfromxeon(XeonBotInc, m, from)
+rentfromxsz(SzBotInc, m, from)
 }
 break
 case 'rentbotlist': 
 try {
-let user = [... new Set([...global.conns.filter(XeonBotInc => XeonBotInc.user).map(XeonBotInc => XeonBotInc.user)])]
+let user = [... new Set([...global.conns.filter(SzBotInc => SzBotInc.user).map(SzBotInc => SzBotInc.user)])]
 te = "*Rentbot List*\n\n"
 for (let i of user){
-y = await XeonBotInc.decodeJid(i.id)
+y = await SzBotInc.decodeJid(i.id)
 te += " × User : @" + y.split("@")[0] + "\n"
 te += " × Name : " + i.name + "\n\n"
 }
-XeonBotInc.sendMessage(from,{text:te,mentions: [y], },{quoted:m})
+SzBotInc.sendMessage(from,{text:te,mentions: [y], },{quoted:m})
 } catch (err) {
-replygcxeon(`There are no users who have rented the bot yet`)
+replygcsz(`There are no users who have rented the bot yet`)
 }
 break
 case 'shutdown':
-if (!XeonTheCreator) return XeonStickOwner()
-replygcxeon(`Ba bye...`)
+if (!KenvTheCreator) return XeonStickOwner()
+replygcsc(`Ba bye...`)
 await sleep(3000)
 process.exit()
 break
 case 'owner': {
-const repf = await XeonBotInc.sendMessage(from, { 
+const repf = await SzBotInc.sendMessage(from, { 
 contacts: { 
 displayName: `${list.length} Contact`, 
 contacts: list }, mentions: [sender] }, { quoted: m })
-XeonBotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Here is my handsome owner😇`, mentions: [sender]}, { quoted: repf })
+SzBotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, 𝑽𝒐𝒊𝒄𝒊 𝒎𝒐𝒏 𝒑𝒓𝒐𝒑𝒓𝒊𝒐 𝒄𝒉𝒂𝒖𝒅 𝒅'𝒂𝒃𝒐𝒓𝒅 𝒍𝒆𝒔 𝒑𝒓𝒐𝒍𝒆̀𝒎𝒆𝒔`, mentions: [sender]}, { quoted: repf })
 }
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
